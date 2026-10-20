@@ -49,7 +49,7 @@ jobs:
           [
             {"url": "https://github.com/frappe/erpnext", "branch": "${{ env.FRAPPE_VERSION }}"},
             {"url": "https://github.com/frappe/hrms", "branch": "${{ env.FRAPPE_VERSION }}"},
-            {"url": "https://github.com/akashdataanalyst/Grid_erp_version2", "branch": "${{ env.APP_BRANCH }}"}
+            {"url": "https://github.com/akashdataanalyst/Grid_erp_version2", "branch": "${{ env.APP_BRANCH }}"},
             {"url": "https://github.com/akashdataanalyst/biometric", "branch": "${{ env.Biometric_BRANCH }}"}
           ]
           EOF
