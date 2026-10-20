@@ -1,0 +1,223 @@
+# =====================================================================
+#  BUILD IMAGE: Frappe + ERPNext + HRMS + Grid ERP
+#  Repo:  akashdataanalyst/Grid_Erp (public, branch: main)
+#  Image: ghcr.io/akashdataanalyst/grid-erp-v2:latest
+#
+#  AUTO ROLLBACK:
+#   deploy se pehle -> chalti image ko ":rollback" tag + DB backup + maintenance ON
+#   pull / up / migrate / health-check mein kuch bhi fail ->
+#     purani image wapas chalao (+ migrate shuru ho chuka tha to DB backup restore)
+#     -> maintenance OFF -> job laal (fail) dikhegi, par site purane version par chalti rahegi
+# =====================================================================
+
+name: Build Image
+
+on:
+  push:
+    branches: [ main ]       # main par push hone par build
+  workflow_dispatch:         # Actions tab se manual run
+
+# ek time par sirf ek deploy (doosra queue mein wait karega)
+concurrency:
+  group: deploy-griderp
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/akashdataanalyst/grid-erp-v2
+  APP_BRANCH: main
+  FRAPPE_VERSION: version-16
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      # STEP 1: frappe_docker download (isme Containerfile hai)
+      - name: frappe_docker lao
+        uses: actions/checkout@v5
+        with:
+          repository: frappe/frappe_docker
+
+      # STEP 2: apps.json = image mein kaunsi apps jaayengi
+      - name: apps.json banao
+        run: |
+          cat > apps.json <<EOF
+          [
+            {"url": "https://github.com/frappe/erpnext", "branch": "${{ env.FRAPPE_VERSION }}"},
+            {"url": "https://github.com/frappe/hrms", "branch": "${{ env.FRAPPE_VERSION }}"},
+            {"url": "https://github.com/akashdataanalyst/Grid_Erp_version2", "branch": "${{ env.APP_BRANCH }}"}
+          ]
+          EOF
+          cat apps.json
+          jq empty apps.json && echo "apps.json OK"
+
+      # STEP 3: Docker build tool
+      - name: Docker Buildx setup
+        uses: docker/setup-buildx-action@v3
+
+      # STEP 4: GHCR login
+      - name: GHCR login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # STEP 5: Image build + push
+      #   apps.json "secret" ke roop mein jaati hai (naya frappe_docker tareeka)
+      #   CACHE_BUST = commit SHA, taaki har push par naya code aaye
+      - name: Image build + push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: images/layered/Containerfile
+          push: true
+          secret-files: |
+            apps_json=apps.json
+          build-args: |
+            FRAPPE_PATH=https://github.com/frappe/frappe
+            FRAPPE_BRANCH=${{ env.FRAPPE_VERSION }}
+            CACHE_BUST=${{ github.sha }}
+          tags: |
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
+
+  # ===================================================================
+  # JOB 2: EC2 PAR DEPLOY (build pass hone ke baad hi) + AUTO ROLLBACK
+  # ===================================================================
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: EC2 par deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 30m
+          script: |
+            set -e
+            cd ~/frappe_docker
+            P="docker compose -p griderp -f compose.custom.yaml"
+            SITE=griderp.in
+            IMAGE=ghcr.io/akashdataanalyst/grid-erp-v2
+            DBP=$(grep '^DB_PASSWORD=' .env | cut -d= -f2-)
+            OLD_ID=""
+            BK_DB=""
+            STAGE="start"
+
+            wait_backend() {
+              for i in $(seq 1 40); do
+                $P exec -T backend bench --version >/dev/null 2>&1 && return 0
+                echo "   backend ka wait... ($i)"; sleep 5
+              done
+              return 1
+            }
+
+            health_check() {
+              for i in $(seq 1 12); do
+                if curl -fsS -o /dev/null -H "Host: $SITE" http://localhost/api/method/ping; then
+                  return 0
+                fi
+                echo "   site ka wait... ($i)"; sleep 5
+              done
+              return 1
+            }
+
+            rollback() {
+              set +e
+              trap - ERR
+              echo ""
+              echo "!! DEPLOY FAIL (stage: $STAGE) - AUTO ROLLBACK shuru"
+              if [ -z "$OLD_ID" ]; then
+                echo "!! Pichli image nahi mili (first deploy?) - rollback possible nahi, manual check karo"
+                exit 1
+              fi
+
+              echo ">> R1. Purani image wapas"
+              docker tag "$OLD_ID" "$IMAGE:latest"
+              $P up -d --pull never
+              wait_backend
+
+              if [ "$STAGE" = "migrate" ] || [ "$STAGE" = "health" ]; then
+                if [ -n "$BK_DB" ]; then
+                  echo ">> R2. DB restore: $BK_DB"
+                  $P exec -T backend bench --site "$SITE" restore "$BK_DB" \
+                    --db-root-username root --db-root-password "$DBP" --force
+                  $P exec -T backend bench --site "$SITE" migrate
+                else
+                  echo "!! Backup file nahi mili - DB restore skip"
+                fi
+              else
+                echo ">> R2. DB restore ki zaroorat nahi (migrate chala hi nahi)"
+              fi
+
+              echo ">> R3. Maintenance OFF + cache clear"
+              $P exec -T backend bench --site "$SITE" set-maintenance-mode off
+              $P exec -T backend bench --site "$SITE" clear-cache
+
+              if health_check; then
+                echo ">> ROLLBACK DONE ✅ - site purane version par chal rahi hai"
+              else
+                echo "!! Rollback ke baad bhi site nahi khul rahi - turant manual check karo"
+              fi
+              exit 1
+            }
+
+            echo ">> 1. Backup + purani image save (sirf agar site chal rahi hai)"
+            CID=$($P ps -q backend 2>/dev/null || true)
+            if [ -n "$CID" ] && $P exec -T backend test -f "sites/$SITE/site_config.json"; then
+              OLD_ID=$(docker inspect --format '{{.Image}}' "$CID")
+              docker tag "$OLD_ID" "$IMAGE:rollback"
+              echo "   purani image save: $IMAGE:rollback"
+
+              $P exec -T backend bench --site "$SITE" backup --with-files
+              BK_DB=$($P exec -T backend bash -c "ls -1t sites/$SITE/private/backups/*-database.sql.gz | head -1" | tr -d '\r')
+              echo "   backup: $BK_DB"
+
+               echo "   S3 par copy..."
+              sudo aws s3 sync "/var/lib/docker/volumes/griderp_sites/_data/$SITE/private/backups/" \
+                "s3://griderp-backups-akash/$SITE/" --only-show-errors \
+                && echo "   S3 copy ✅" || echo "   !! S3 copy fail - deploy jaari rahega"
+
+               
+              $P exec -T backend bench --site "$SITE" set-maintenance-mode on
+            else
+              echo "   site/backend nahi chal raha - backup aur rollback-image skip (first deploy)"
+            fi
+
+            # yahan se aage kuch bhi fail hua to rollback() apne aap chalega
+            trap rollback ERR
+
+            echo ">> 2. Nayi image pull"
+            STAGE="pull"
+            $P pull
+
+            echo ">> 3. Containers restart (naye code ke saath)"
+            STAGE="up"
+            $P up -d
+            wait_backend
+
+            echo ">> 4. Migrate (naye doctypes/fields database mein)"
+            STAGE="migrate"
+            $P exec -T backend bench --site "$SITE" migrate
+
+            echo ">> 5. Maintenance OFF + cache clear"
+            $P exec -T backend bench --site "$SITE" set-maintenance-mode off
+            $P exec -T backend bench --site "$SITE" clear-cache
+
+            echo ">> 6. Health check (site khul rahi hai?)"
+            STAGE="health"
+            health_check
+
+            trap - ERR
+
+            echo ">> 7. Purani images saaf (':rollback' wali bachi rahegi)"
+            docker image prune -f
+
+            echo ">> Deploy done ✅"

@@ -1,0 +1,150 @@
+{
+ "actions": [],
+ "creation": "2026-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "assessment_defaults_section",
+  "default_assessment_template",
+  "auto_assign_on_shortlist",
+  "portal_base_url",
+  "ai_section",
+  "openai_api_key",
+  "ai_model",
+  "certificate_section",
+  "certificate_company_name",
+  "certificate_logo",
+  "certificate_footer_text",
+  "whatsapp_section",
+  "whatsapp_provider",
+  "whatsapp_api_url",
+  "whatsapp_api_key",
+  "whatsapp_template_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "assessment_defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Assessment Defaults"
+  },
+  {
+   "fieldname": "default_assessment_template",
+   "fieldtype": "Link",
+   "label": "Default Assessment Template",
+   "options": "Assessment Template",
+   "description": "Used when a Job Opening has no Assessment Template of its own (e.g. General Video Introduction)."
+  },
+  {
+   "fieldname": "auto_assign_on_shortlist",
+   "fieldtype": "Check",
+   "label": "Auto-send Assessment on Shortlist",
+   "default": "1",
+   "description": "When a Job Applicant is marked Shortlisted, the assessment (Job Opening template, else the default above) is assigned and emailed automatically. HR can still assign any template manually from Job Applicant > Assessment > Assign Assessment."
+  },
+  {
+   "fieldname": "portal_base_url",
+   "fieldtype": "Data",
+   "label": "Portal Base URL",
+   "description": "Base address put in candidate links, e.g. https://careers.yourcompany.com. Must be HTTPS (or localhost for testing), otherwise browsers block the camera. Empty = site URL."
+  },
+  {
+   "fieldname": "ai_section",
+   "fieldtype": "Section Break",
+   "label": "AI Evaluation Settings"
+  },
+  {
+   "fieldname": "openai_api_key",
+   "fieldtype": "Password",
+   "label": "OpenAI API Key",
+   "description": "Get your API key from https://platform.openai.com/api-keys"
+  },
+  {
+   "fieldname": "ai_model",
+   "fieldtype": "Select",
+   "label": "AI Model",
+   "options": "gpt-4o-mini\ngpt-4o\ngpt-3.5-turbo",
+   "default": "gpt-4o-mini"
+  },
+  {
+   "fieldname": "certificate_section",
+   "fieldtype": "Section Break",
+   "label": "Certificate Settings"
+  },
+  {
+   "fieldname": "certificate_company_name",
+   "fieldtype": "Data",
+   "label": "Company Name on Certificate"
+  },
+  {
+   "fieldname": "certificate_logo",
+   "fieldtype": "Attach Image",
+   "label": "Certificate Logo"
+  },
+  {
+   "fieldname": "certificate_footer_text",
+   "fieldtype": "Small Text",
+   "label": "Certificate Footer Text",
+   "default": "This certificate is awarded upon successful completion of the recruitment assessment."
+  },
+  {
+   "fieldname": "whatsapp_section",
+   "fieldtype": "Section Break",
+   "label": "WhatsApp Settings"
+  },
+  {
+   "fieldname": "whatsapp_provider",
+   "fieldtype": "Select",
+   "label": "WhatsApp Provider",
+   "options": "\nTwilio\nWati\nUltraMsg\nCustom"
+  },
+  {
+   "fieldname": "whatsapp_api_url",
+   "fieldtype": "Data",
+   "label": "WhatsApp API URL"
+  },
+  {
+   "fieldname": "whatsapp_api_key",
+   "fieldtype": "Password",
+   "label": "WhatsApp API Key / Token"
+  },
+  {
+   "fieldname": "whatsapp_template_name",
+   "fieldtype": "Data",
+   "label": "WhatsApp Message Template Name",
+   "description": "For providers that use template-based messaging (e.g. WATI)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-06 17:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Recruitment Assessment",
+ "name": "Assessment Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "HR Manager",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 0
+}

@@ -1,0 +1,16 @@
+{
+ "actions": [],
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["option_text", "is_correct", "option_image"],
+ "fields": [
+  {"fieldname": "option_text", "fieldtype": "Data", "label": "Option Text", "reqd": 1},
+  {"default": "0", "fieldname": "is_correct", "fieldtype": "Check", "label": "Correct"},
+  {"fieldname": "option_image", "fieldtype": "Attach Image", "label": "Option Image"}
+ ],
+ "istable": 1,
+ "module": "Recruitment Assessment",
+ "name": "Question Option",
+ "permissions": []
+}

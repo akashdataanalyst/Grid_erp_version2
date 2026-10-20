@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-10-08 12:00:00.000000",
+ "description": "Audit log of AI Assistant requests. Never contains API keys, prompts or ERP values.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "conversation",
+  "request_type",
+  "status",
+  "error_code",
+  "column_break_main",
+  "reference_doctype",
+  "operation",
+  "execution_ms",
+  "provider_section",
+  "provider",
+  "model",
+  "column_break_provider",
+  "tool_rounds",
+  "prompt_tokens",
+  "completion_tokens"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "conversation",
+   "fieldtype": "Data",
+   "label": "Conversation ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "request_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Request Type",
+   "options": "Chat\nTool",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Success\nDenied\nNot Configured\nInvalid\nRate Limited\nError",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error_code",
+   "fieldtype": "Data",
+   "label": "Error Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Operation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "execution_ms",
+   "fieldtype": "Int",
+   "label": "Execution Time (ms)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provider_section",
+   "fieldtype": "Section Break",
+   "label": "Provider"
+  },
+  {
+   "fieldname": "provider",
+   "fieldtype": "Data",
+   "label": "Provider",
+   "read_only": 1
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_provider",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tool_rounds",
+   "fieldtype": "Int",
+   "label": "Tool Rounds",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prompt_tokens",
+   "fieldtype": "Int",
+   "label": "Prompt Tokens",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completion_tokens",
+   "fieldtype": "Int",
+   "label": "Completion Tokens",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "links": [],
+ "modified": "2026-10-08 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid AI",
+ "name": "AI Query Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

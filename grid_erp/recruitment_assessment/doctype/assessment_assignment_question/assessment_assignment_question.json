@@ -1,0 +1,23 @@
+{
+ "actions": [],
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["question_bank", "question_text", "question_type", "marks", "negative_marking", "options_json", "correct_answer", "coding_language", "sql_schema", "expected_output"],
+ "fields": [
+  {"fieldname": "question_bank", "fieldtype": "Link", "label": "Question Bank", "options": "Question Bank"},
+  {"fieldname": "question_text", "fieldtype": "Small Text", "label": "Question Text"},
+  {"fieldname": "question_type", "fieldtype": "Data", "label": "Question Type"},
+  {"fieldname": "marks", "fieldtype": "Float", "label": "Marks"},
+  {"fieldname": "negative_marking", "fieldtype": "Float", "label": "Negative Marking"},
+  {"fieldname": "options_json", "fieldtype": "Long Text", "label": "Options JSON"},
+  {"fieldname": "correct_answer", "fieldtype": "Long Text", "label": "Correct Answer"},
+  {"fieldname": "coding_language", "fieldtype": "Data", "label": "Coding Language"},
+  {"fieldname": "sql_schema", "fieldtype": "Long Text", "label": "SQL Schema"},
+  {"fieldname": "expected_output", "fieldtype": "Small Text", "label": "Expected Output"}
+ ],
+ "istable": 1,
+ "module": "Recruitment Assessment",
+ "name": "Assessment Assignment Question",
+ "permissions": []
+}

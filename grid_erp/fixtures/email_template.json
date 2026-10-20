@@ -1,0 +1,9 @@
+[
+ {
+  "doctype": "Email Template",
+  "name": "Assessment Invitation",
+  "subject": "Online Assessment Invitation - {{ assessment_template }}",
+  "use_html": 1,
+  "response_html": "<div style=\"font-family: Arial, sans-serif; color: #1f2937; line-height: 1.6; font-size: 14px;\">\n\t<p>Dear {{ applicant_name }},</p>\n\t<p>Thank you for applying for the position of {{ designation }}.</p>\n\t<p>You have been invited to complete the following online assessment.</p>\n\t<table cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse: collapse; margin: 18px 0; width: 100%; max-width: 640px;\">\n\t\t<tr><td style=\"padding: 6px 0; font-weight: 700; width: 180px;\">Assessment Name:</td><td>{{ assessment_template }}</td></tr>\n\t\t<tr><td style=\"padding: 6px 0; font-weight: 700;\">Duration:</td><td>{{ duration }}</td></tr>\n\t\t<tr><td style=\"padding: 6px 0; font-weight: 700;\">Expiry Date:</td><td>{{ expiry_date }}</td></tr>\n\t\t<tr><td style=\"padding: 6px 0; font-weight: 700;\">Assessment Link:</td><td><a href=\"{{ assessment_link }}\">{{ assessment_link }}</a></td></tr>\n\t</table>\n\t<p>Before starting the assessment please ensure:</p>\n\t<ul>\n\t\t<li>Google Chrome or Microsoft Edge</li>\n\t\t<li>Stable Internet Connection</li>\n\t\t<li>Webcam Enabled</li>\n\t\t<li>Microphone Enabled</li>\n\t\t<li>Screen Sharing Required</li>\n\t</ul>\n\t<p>The assessment will not start until all required permissions are granted.</p>\n\t<p>Best Regards,<br>HR Team</p>\n</div>"
+ }
+]

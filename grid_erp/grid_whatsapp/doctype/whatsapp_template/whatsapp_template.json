@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "autoname": "field:template_name",
+ "creation": "2026-10-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "template_name",
+  "active",
+  "reference_doctype",
+  "column_break_main",
+  "provider_template_name",
+  "provider_template_id",
+  "language",
+  "category",
+  "message_section",
+  "message_body",
+  "variables",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "description": "Optional. When set, variable field paths are checked against this DocType.",
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Used For DocType",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "provider_template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Provider Template Name"
+  },
+  {
+   "fieldname": "provider_template_id",
+   "fieldtype": "Data",
+   "label": "Provider Template ID"
+  },
+  {
+   "default": "en",
+   "description": "Language code approved for the template, e.g. en, en_US, hi.",
+   "fieldname": "language",
+   "fieldtype": "Data",
+   "label": "Language"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "\nUtility\nMarketing\nAuthentication"
+  },
+  {
+   "fieldname": "message_section",
+   "fieldtype": "Section Break",
+   "label": "Message"
+  },
+  {
+   "description": "Write placeholders as {{variable_name}}, for example: Dear {{supplier_name}}, Purchase Order {{po_number}} for {{grand_total}} has been issued by {{company}}. Every placeholder needs a row in Variables (use the Detect Variables button).",
+   "fieldname": "message_body",
+   "fieldtype": "Text",
+   "label": "Message Body",
+   "reqd": 1
+  },
+  {
+   "fieldname": "variables",
+   "fieldtype": "Table",
+   "label": "Variables",
+   "options": "WhatsApp Template Variable"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid WhatsApp",
+ "name": "WhatsApp Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "WhatsApp Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

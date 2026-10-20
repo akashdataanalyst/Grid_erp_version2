@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "creation": "2026-07-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "event_type",
+  "timestamp",
+  "user",
+  "ip_address",
+  "remarks",
+  "payload_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Select",
+   "label": "Event Type",
+   "options": "Consent Accepted\nConsent Rejected\nPermission Granted\nPermission Denied\nAssessment Started\nAssessment Paused\nAssessment Resumed\nAssessment Submitted\nAssessment Auto Submitted\nRecording Started\nRecording Stopped\nCamera Started\nCamera Stopped\nMicrophone Started\nMicrophone Stopped\nScreen Share Started\nScreen Share Stopped\nAnswer File Uploaded",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "label": "Timestamp",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "User",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "payload_json",
+   "fieldtype": "Long Text",
+   "label": "Payload JSON"
+  }
+ ],
+ "istable": 1,
+ "module": "Recruitment Assessment",
+ "name": "Assessment Audit Log",
+ "permissions": [],
+ "modified": "2026-10-06 12:00:00.000000"
+}

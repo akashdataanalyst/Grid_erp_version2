@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "autoname": "AST-VIO-.YYYY.-.#####",
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "istable": 1,
+ "field_order": ["violation_type", "timestamp", "severity", "remarks", "screenshot", "assignment", "attempt", "event_type", "event_timestamp", "user_agent", "ip_address", "payload_json"],
+ "fields": [
+  {"fieldname": "violation_type", "fieldtype": "Data", "label": "Violation Type", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "timestamp", "fieldtype": "Datetime", "label": "Timestamp", "reqd": 1},
+  {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"},
+  {"fieldname": "screenshot", "fieldtype": "Attach", "label": "Screenshot"},
+  {"fieldname": "assignment", "fieldtype": "Link", "label": "Assignment", "options": "Assessment Assignment", "reqd": 1},
+  {"fieldname": "attempt", "fieldtype": "Link", "label": "Attempt", "options": "Assessment Attempt"},
+  {"fieldname": "event_type", "fieldtype": "Data", "label": "Event Type", "reqd": 1},
+  {"fieldname": "severity", "fieldtype": "Select", "label": "Severity", "options": "Low\nMedium\nHigh", "default": "Medium"},
+  {"fieldname": "event_timestamp", "fieldtype": "Datetime", "label": "Event Timestamp", "reqd": 1},
+  {"fieldname": "user_agent", "fieldtype": "Data", "label": "User Agent"},
+  {"fieldname": "ip_address", "fieldtype": "Data", "label": "IP Address"},
+  {"fieldname": "payload_json", "fieldtype": "Long Text", "label": "Payload JSON"}
+ ],
+ "module": "Recruitment Assessment",
+ "name": "Assessment Violation",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR User", "read": 1, "write": 1, "create": 1, "report": 1, "share": 1},
+  {"role": "Recruiter", "read": 1, "report": 1}
+ ],
+ "title_field": "violation_type"
+}

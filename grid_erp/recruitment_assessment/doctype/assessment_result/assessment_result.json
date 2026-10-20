@@ -1,0 +1,33 @@
+{
+ "actions": [],
+ "autoname": "AST-RSLT-.YYYY.-.#####",
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["assignment", "attempt", "job_applicant", "template", "total_score", "maximum_score", "percentage", "pass_fail", "manual_pending_count", "time_taken_minutes", "evaluated_by", "evaluated_on", "remarks"],
+ "fields": [
+  {"fieldname": "assignment", "fieldtype": "Link", "label": "Assignment", "options": "Assessment Assignment", "reqd": 1},
+  {"fieldname": "attempt", "fieldtype": "Link", "label": "Attempt", "options": "Assessment Attempt", "reqd": 1},
+  {"fieldname": "job_applicant", "fieldtype": "Link", "label": "Job Applicant", "options": "Job Applicant"},
+  {"fieldname": "template", "fieldtype": "Link", "label": "Template", "options": "Assessment Template"},
+  {"fieldname": "total_score", "fieldtype": "Float", "label": "Total Score"},
+  {"fieldname": "maximum_score", "fieldtype": "Float", "label": "Maximum Score"},
+  {"fieldname": "percentage", "fieldtype": "Float", "label": "Percentage"},
+  {"fieldname": "pass_fail", "fieldtype": "Select", "label": "Result", "options": "Passed\nFailed\nPending Review", "default": "Pending Review", "in_list_view": 1},
+  {"fieldname": "manual_pending_count", "fieldtype": "Int", "label": "Manual Pending"},
+  {"fieldname": "time_taken_minutes", "fieldtype": "Float", "label": "Time Taken (Minutes)"},
+  {"fieldname": "evaluated_by", "fieldtype": "Link", "label": "Evaluated By", "options": "User"},
+  {"fieldname": "evaluated_on", "fieldtype": "Datetime", "label": "Evaluated On"},
+  {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"}
+ ],
+ "module": "Recruitment Assessment",
+ "name": "Assessment Result",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR User", "read": 1, "write": 1, "create": 1, "report": 1, "share": 1},
+  {"role": "Recruiter", "read": 1, "report": 1},
+  {"role": "Interviewer", "read": 1, "report": 1}
+ ],
+ "title_field": "job_applicant"
+}

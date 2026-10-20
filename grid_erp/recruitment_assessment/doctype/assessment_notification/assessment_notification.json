@@ -1,0 +1,26 @@
+{
+ "actions": [],
+ "autoname": "AST-NOT-.YYYY.-.#####",
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["assignment", "notification_type", "channel", "recipient", "status", "sent_on", "payload_json", "error"],
+ "fields": [
+  {"fieldname": "assignment", "fieldtype": "Link", "label": "Assignment", "options": "Assessment Assignment", "reqd": 1},
+  {"fieldname": "notification_type", "fieldtype": "Data", "label": "Notification Type", "reqd": 1},
+  {"fieldname": "channel", "fieldtype": "Select", "label": "Channel", "options": "Email\nWhatsApp\nSMS\nSystem", "default": "Email"},
+  {"fieldname": "recipient", "fieldtype": "Data", "label": "Recipient"},
+  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Queued\nSent\nFailed", "default": "Queued"},
+  {"fieldname": "sent_on", "fieldtype": "Datetime", "label": "Sent On"},
+  {"fieldname": "payload_json", "fieldtype": "Long Text", "label": "Payload JSON"},
+  {"fieldname": "error", "fieldtype": "Small Text", "label": "Error"}
+ ],
+ "module": "Recruitment Assessment",
+ "name": "Assessment Notification",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR User", "read": 1, "write": 1, "create": 1, "report": 1, "share": 1}
+ ],
+ "title_field": "notification_type"
+}

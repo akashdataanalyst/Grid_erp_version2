@@ -1,0 +1,13 @@
+[pre_model_sync]
+# Grid AI: former grid_ai app becomes this app's module (run before its DocTypes sync)
+grid_erp.patches.grid_ai.adopt_grid_ai_app
+# Grid Interview: former grid_interview app becomes this app's module
+grid_erp.patches.grid_interview.adopt_grid_interview_app
+
+[post_model_sync]
+grid_erp.patches.recruitment_assessment.install_assessment_module
+grid_erp.patches.recruitment_assessment.seed_trial_assessment
+# Grid AI (former grid_ai.patches.v1.*; already-run ones are marked done by adopt_grid_ai_app)
+grid_erp.patches.grid_ai.move_allowed_role
+grid_erp.patches.grid_ai.add_item_fields
+grid_erp.patches.grid_ai.user_choice_defaults

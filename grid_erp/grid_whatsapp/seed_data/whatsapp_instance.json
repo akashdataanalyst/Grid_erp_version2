@@ -1,0 +1,14 @@
+[
+ {
+  "instance_name": "Calco Evolution",
+  "provider": "Evolution API",
+  "active": 1,
+  "default_instance": 1,
+  "instance_id": "Akash_Sharma",
+  "description": "Evolution API v2.3.7 server (same as the Google Sheet Apps Script). Instance ID = Evolution instance name.",
+  "api_base_url": "http://15.206.163.80:8081",
+  "timeout": 60,
+  "verify_ssl": 0,
+  "doctype": "WhatsApp Instance"
+ }
+]

@@ -1,0 +1,25 @@
+{
+ "actions": [],
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["question_bank", "question_text", "question_type", "answer", "response_file", "score", "marks", "evaluation_status", "is_correct", "is_objective", "remarks", "ai_feedback"],
+ "fields": [
+  {"fieldname": "question_bank", "fieldtype": "Link", "label": "Question", "options": "Question Bank", "reqd": 1},
+  {"fieldname": "question_text", "fieldtype": "Small Text", "label": "Question Text"},
+  {"fieldname": "question_type", "fieldtype": "Data", "label": "Question Type"},
+  {"fieldname": "answer", "fieldtype": "Long Text", "label": "Answer"},
+  {"fieldname": "response_file", "fieldtype": "Attach", "label": "Response File"},
+  {"fieldname": "score", "fieldtype": "Float", "label": "Score"},
+  {"fieldname": "marks", "fieldtype": "Float", "label": "Marks"},
+  {"fieldname": "evaluation_status", "fieldtype": "Select", "label": "Evaluation Status", "options": "Pending Review\nAuto Evaluated\nEvaluated\nAI Evaluated", "default": "Pending Review"},
+  {"default": "0", "fieldname": "is_correct", "fieldtype": "Check", "label": "Correct"},
+  {"default": "0", "fieldname": "is_objective", "fieldtype": "Check", "label": "Objective"},
+  {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"},
+  {"fieldname": "ai_feedback", "fieldtype": "Small Text", "label": "AI Feedback"}
+ ],
+ "istable": 1,
+ "module": "Recruitment Assessment",
+ "name": "Assessment Answer",
+ "permissions": []
+}

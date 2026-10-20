@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:reference_doctype",
+ "creation": "2026-10-08 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "reference_doctype",
+  "label",
+  "column_break_main",
+  "source_app",
+  "module",
+  "is_custom",
+  "is_submittable",
+  "is_sensitive",
+  "confirm_sensitive",
+  "description_section",
+  "ai_description",
+  "operations_section",
+  "allow_count",
+  "allow_list",
+  "allow_search",
+  "column_break_ops",
+  "allow_sum",
+  "allow_average",
+  "allow_min_max",
+  "allow_group_by",
+  "fields_section",
+  "default_date_field",
+  "column_break_fields",
+  "include_drafts",
+  "fields",
+  "limits_section",
+  "max_records",
+  "column_break_limits",
+  "max_query_time"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "AI can only use this DocType when enabled. New DocTypes are always discovered as disabled.",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "DocType",
+   "options": "DocType",
+   "reqd": 1,
+   "set_only_once": 1,
+   "unique": 1
+  },
+  {
+   "description": "Name the AI and users will see for this data source.",
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "label": "Label"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_app",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "App",
+   "read_only": 1
+  },
+  {
+   "fieldname": "module",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Module",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_custom",
+   "fieldtype": "Check",
+   "label": "Custom DocType",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_submittable",
+   "fieldtype": "Check",
+   "label": "Submittable",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Detected as sensitive (HR pay, bank, credentials, system configuration...).",
+   "fieldname": "is_sensitive",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Sensitive",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "is_sensitive",
+   "description": "Required to enable a sensitive DocType. Users still only see records their ERPNext permissions allow.",
+   "fieldname": "confirm_sensitive",
+   "fieldtype": "Check",
+   "label": "I have reviewed this sensitive DocType and want AI to use it"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "AI Description"
+  },
+  {
+   "description": "Explain to the AI what this data is and when to use it, e.g. \"Customer sales invoices. Use for sales, revenue, receivables.\" Hindi / Hinglish synonyms help.",
+   "fieldname": "ai_description",
+   "fieldtype": "Small Text",
+   "label": "AI Description"
+  },
+  {
+   "fieldname": "operations_section",
+   "fieldtype": "Section Break",
+   "label": "Allowed Operations"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_count",
+   "fieldtype": "Check",
+   "label": "Count"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_list",
+   "fieldtype": "Check",
+   "label": "List"
+  },
+  {
+   "default": "0",
+   "description": "Text search across filterable text/link fields.",
+   "fieldname": "allow_search",
+   "fieldtype": "Check",
+   "label": "Search"
+  },
+  {
+   "fieldname": "column_break_ops",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_sum",
+   "fieldtype": "Check",
+   "label": "Sum"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_average",
+   "fieldtype": "Check",
+   "label": "Average"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_min_max",
+   "fieldtype": "Check",
+   "label": "Min / Max"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_group_by",
+   "fieldtype": "Check",
+   "label": "Group By"
+  },
+  {
+   "fieldname": "fields_section",
+   "fieldtype": "Section Break",
+   "label": "Allowed Fields"
+  },
+  {
+   "description": "Date field used for periods like \"is month\" when the question does not say which date (e.g. posting_date). Defaults to creation.",
+   "fieldname": "default_date_field",
+   "fieldtype": "Data",
+   "label": "Default Date Field"
+  },
+  {
+   "fieldname": "column_break_fields",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "is_submittable",
+   "description": "By default only submitted documents are counted. Cancelled documents are always excluded.",
+   "fieldname": "include_drafts",
+   "fieldtype": "Check",
+   "label": "Include Draft Documents"
+  },
+  {
+   "description": "Only these fields are visible to the AI. Use \"Load Fields\" to fill from the DocType. Password and secret fields are never allowed.",
+   "fieldname": "fields",
+   "fieldtype": "Table",
+   "label": "Fields",
+   "options": "AI Tool Field"
+  },
+  {
+   "fieldname": "limits_section",
+   "fieldtype": "Section Break",
+   "label": "Limits"
+  },
+  {
+   "default": "20",
+   "description": "Maximum rows returned for list / group-by results.",
+   "fieldname": "max_records",
+   "fieldtype": "Int",
+   "label": "Maximum Records"
+  },
+  {
+   "fieldname": "column_break_limits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10",
+   "description": "Seconds before the database query is stopped.",
+   "fieldname": "max_query_time",
+   "fieldtype": "Int",
+   "label": "Maximum Query Time (seconds)"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-08 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid AI",
+ "name": "AI Tool Configuration",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "label,source_app,module",
+ "show_title_field_in_link": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "label",
+ "track_changes": 1
+}

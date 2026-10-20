@@ -1,0 +1,27 @@
+{
+ "actions": [],
+ "autoname": "AST-RCD-.YYYY.-.#####",
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["assignment", "attempt", "recording_type", "file", "external_url", "mime_type", "duration_seconds", "captured_on", "notes"],
+ "fields": [
+  {"fieldname": "assignment", "fieldtype": "Link", "label": "Assignment", "options": "Assessment Assignment", "reqd": 1},
+  {"fieldname": "attempt", "fieldtype": "Link", "label": "Attempt", "options": "Assessment Attempt"},
+  {"fieldname": "recording_type", "fieldtype": "Select", "label": "Recording Type", "options": "Webcam\nSnapshot\nMicrophone\nScreen"},
+  {"fieldname": "file", "fieldtype": "Attach", "label": "File"},
+  {"fieldname": "external_url", "fieldtype": "Data", "label": "External URL"},
+  {"fieldname": "mime_type", "fieldtype": "Data", "label": "MIME Type"},
+  {"fieldname": "duration_seconds", "fieldtype": "Int", "label": "Duration Seconds"},
+  {"fieldname": "captured_on", "fieldtype": "Datetime", "label": "Captured On"},
+  {"fieldname": "notes", "fieldtype": "Small Text", "label": "Notes"}
+ ],
+ "module": "Recruitment Assessment",
+ "name": "Assessment Recording",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR User", "read": 1, "write": 1, "create": 1, "report": 1, "share": 1}
+ ],
+ "title_field": "recording_type"
+}

@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-10-08 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "conversation",
+  "role",
+  "status",
+  "feedback",
+  "content",
+  "context_note",
+  "views"
+ ],
+ "fields": [
+  {
+   "fieldname": "conversation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Conversation",
+   "options": "AI Conversation",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Role",
+   "options": "user\nassistant",
+   "read_only": 1
+  },
+  {
+   "default": "ok",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "ok\nerror\npending",
+   "read_only": 1
+  },
+  {
+   "description": "The user's thumbs up / down on this reply.",
+   "fieldname": "feedback",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Feedback",
+   "options": "\nUp\nDown",
+   "read_only": 1
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Long Text",
+   "label": "Content",
+   "read_only": 1
+  },
+  {
+   "description": "Short summary of the ERP queries behind this answer, used as context for follow-up questions. Contains no ERP values.",
+   "fieldname": "context_note",
+   "fieldtype": "Small Text",
+   "label": "Context Note",
+   "read_only": 1
+  },
+  {
+   "description": "JSON shown under the reply on the chat page: data source, link to the records, and the rows of list / group results.",
+   "fieldname": "views",
+   "fieldtype": "Long Text",
+   "label": "Data Views",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "links": [],
+ "modified": "2026-10-09 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid AI",
+ "name": "AI Chat Message",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": []
+}

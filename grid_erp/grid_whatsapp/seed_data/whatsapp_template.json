@@ -1,0 +1,181 @@
+[
+ {
+  "template_name": "Leave Application - Approver",
+  "active": 1,
+  "reference_doctype": "Leave Application",
+  "language": "en",
+  "category": "Utility",
+  "message_body": "Dear {{approver_name}},\n\n*{{employee_name}}* ({{employee_id}}) has applied for leave.\n\nLeave Type: {{leave_type}}\nFrom: {{from_date}}\nTo: {{to_date}}\nTotal Days: {{total_days}}\nLeave Balance: {{leave_balance}}\nReason: {{reason}}\n\nApplication: {{application_id}}\nPlease approve or reject: {{document_url}}\n\n- Calco HR",
+  "description": "Sent to the Leave Approver when an employee applies for leave.",
+  "doctype": "WhatsApp Template",
+  "variables": [
+   {
+    "variable_name": "approver_name",
+    "source_type": "Document Field",
+    "source_field": "leave_approver_name",
+    "default_value": "Sir/Madam",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "employee_name",
+    "source_type": "Document Field",
+    "source_field": "employee_name",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "employee_id",
+    "source_type": "Document Field",
+    "source_field": "employee",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "leave_type",
+    "source_type": "Document Field",
+    "source_field": "leave_type",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "from_date",
+    "source_type": "Document Field",
+    "source_field": "from_date",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "to_date",
+    "source_type": "Document Field",
+    "source_field": "to_date",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "total_days",
+    "source_type": "Document Field",
+    "source_field": "total_leave_days",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "leave_balance",
+    "source_type": "Document Field",
+    "source_field": "leave_balance",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "reason",
+    "source_type": "Document Field",
+    "source_field": "description",
+    "default_value": "-",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "application_id",
+    "source_type": "System Value",
+    "source_field": "document_name",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "document_url",
+    "source_type": "System Value",
+    "source_field": "document_url",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   }
+  ]
+ },
+ {
+  "template_name": "Leave Application - Status to Employee",
+  "active": 1,
+  "reference_doctype": "Leave Application",
+  "language": "en",
+  "category": "Utility",
+  "message_body": "Dear {{employee_name}},\n\nYour {{leave_type}} application *{{application_id}}* from {{from_date}} to {{to_date}} ({{total_days}} days) has been *{{status}}* by {{approver_name}}.\n\n- Calco HR",
+  "description": "Sent to the Employee when the approver submits the leave as Approved or Rejected.",
+  "doctype": "WhatsApp Template",
+  "variables": [
+   {
+    "variable_name": "employee_name",
+    "source_type": "Document Field",
+    "source_field": "employee_name",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "leave_type",
+    "source_type": "Document Field",
+    "source_field": "leave_type",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "application_id",
+    "source_type": "System Value",
+    "source_field": "document_name",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "from_date",
+    "source_type": "Document Field",
+    "source_field": "from_date",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "to_date",
+    "source_type": "Document Field",
+    "source_field": "to_date",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "total_days",
+    "source_type": "Document Field",
+    "source_field": "total_leave_days",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "status",
+    "source_type": "Document Field",
+    "source_field": "status",
+    "required": 1,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   },
+   {
+    "variable_name": "approver_name",
+    "source_type": "Document Field",
+    "source_field": "leave_approver_name",
+    "default_value": "Approver",
+    "required": 0,
+    "raw_value": 0,
+    "doctype": "WhatsApp Template Variable"
+   }
+  ]
+ }
+]

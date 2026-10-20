@@ -1,0 +1,34 @@
+// Copyright (c) 2026, Calco PolyTechnik Pvt Ltd and contributors
+// For license information, please see license.txt
+
+frappe.query_reports["AI Usage"] = {
+	filters: [
+		{
+			fieldname: "from_date",
+			label: __("From Date"),
+			fieldtype: "Date",
+			default: frappe.datetime.add_days(frappe.datetime.get_today(), -30),
+			reqd: 1,
+		},
+		{
+			fieldname: "to_date",
+			label: __("To Date"),
+			fieldtype: "Date",
+			default: frappe.datetime.get_today(),
+			reqd: 1,
+		},
+		{
+			fieldname: "group_by",
+			label: __("Group By"),
+			fieldtype: "Select",
+			options: "User\nDay",
+			default: "User",
+		},
+		{
+			fieldname: "user",
+			label: __("User"),
+			fieldtype: "Link",
+			options: "User",
+		},
+	],
+};

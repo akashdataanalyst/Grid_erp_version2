@@ -1,0 +1,267 @@
+{
+ "actions": [],
+ "creation": "2026-10-08 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "provider_section",
+  "provider",
+  "api_base_url",
+  "api_key",
+  "column_break_provider",
+  "model",
+  "temperature",
+  "max_tokens",
+  "timeout",
+  "https_proxy",
+  "behaviour_section",
+  "streaming_enabled",
+  "tool_calling_mode",
+  "max_tool_rounds",
+  "column_break_behaviour",
+  "max_conversation_messages",
+  "max_message_length",
+  "access_section",
+  "allowed_roles",
+  "allowed_role",
+  "rate_limit_per_minute",
+  "column_break_access",
+  "rate_limit_per_day",
+  "token_limit_per_user_per_day",
+  "log_retention_days",
+  "user_choice_section",
+  "allow_user_provider",
+  "column_break_user_choice",
+  "company_key_models",
+  "prompt_section",
+  "system_prompt"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Turn the AI Assistant on or off for all users.",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "provider_section",
+   "fieldtype": "Section Break",
+   "label": "Provider"
+  },
+  {
+   "default": "OpenRouter",
+   "fieldname": "provider",
+   "fieldtype": "Select",
+   "label": "Provider",
+   "options": "OpenRouter\nOllama\nOpenAI\nClaude\nGemini",
+   "reqd": 1
+  },
+  {
+   "default": "https://openrouter.ai/api/v1",
+   "description": "Base URL of the provider API. For Ollama use http://PRIVATE_OLLAMA_IP:11434/v1",
+   "fieldname": "api_base_url",
+   "fieldtype": "Data",
+   "label": "API URL / Base URL"
+  },
+  {
+   "description": "Stored encrypted on the server. Never sent to the browser. Not needed for Ollama.",
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key",
+   "length": 512
+  },
+  {
+   "fieldname": "column_break_provider",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "openrouter/free",
+   "description": "Models of the selected provider. After saving with the API Key, the provider's full live list is shown. Any other model id can also be typed.",
+   "fieldname": "model",
+   "fieldtype": "Autocomplete",
+   "label": "Model",
+   "reqd": 1
+  },
+  {
+   "default": "0.1",
+   "description": "Not sent to Claude (current Claude models do not accept it).",
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "label": "Temperature",
+   "precision": "2"
+  },
+  {
+   "default": "1500",
+   "fieldname": "max_tokens",
+   "fieldtype": "Int",
+   "label": "Max Tokens"
+  },
+  {
+   "default": "60",
+   "description": "Seconds to wait for the provider per request.",
+   "fieldname": "timeout",
+   "fieldtype": "Int",
+   "label": "Timeout (seconds)"
+  },
+  {
+   "description": "Optional. Only AI provider requests use this proxy, e.g. http://172.17.0.1:3128 (see docker/egress_proxy.py). Leave empty for a direct connection.",
+   "fieldname": "https_proxy",
+   "fieldtype": "Data",
+   "label": "HTTPS Proxy"
+  },
+  {
+   "fieldname": "behaviour_section",
+   "fieldtype": "Section Break",
+   "label": "Behaviour"
+  },
+  {
+   "default": "1",
+   "fieldname": "streaming_enabled",
+   "fieldtype": "Check",
+   "label": "Streaming Enabled"
+  },
+  {
+   "default": "Native",
+   "description": "Native uses the provider's function calling. Use Prompt JSON for models that do not support tools.",
+   "fieldname": "tool_calling_mode",
+   "fieldtype": "Select",
+   "label": "Tool Calling Mode",
+   "options": "Native\nPrompt JSON"
+  },
+  {
+   "default": "4",
+   "description": "Maximum tool-call rounds per question.",
+   "fieldname": "max_tool_rounds",
+   "fieldtype": "Int",
+   "label": "Max Tool Rounds"
+  },
+  {
+   "fieldname": "column_break_behaviour",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "12",
+   "description": "How many recent messages are sent to the AI as conversation context.",
+   "fieldname": "max_conversation_messages",
+   "fieldtype": "Int",
+   "label": "Max Conversation Messages"
+  },
+  {
+   "default": "2000",
+   "fieldname": "max_message_length",
+   "fieldtype": "Int",
+   "label": "Max Message Length (characters)"
+  },
+  {
+   "fieldname": "access_section",
+   "fieldtype": "Section Break",
+   "label": "Access & Limits"
+  },
+  {
+   "description": "Only users with at least one of these roles can use the assistant. Leave empty to allow all desk (System) users.",
+   "fieldname": "allowed_roles",
+   "fieldtype": "Table MultiSelect",
+   "label": "Allowed Roles",
+   "options": "AI Allowed Role"
+  },
+  {
+   "description": "Replaced by Allowed Roles; kept only so older data can be moved there.",
+   "fieldname": "allowed_role",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Allowed Role (old)",
+   "options": "Role"
+  },
+  {
+   "default": "10",
+   "fieldname": "rate_limit_per_minute",
+   "fieldtype": "Int",
+   "label": "Requests per User per Minute"
+  },
+  {
+   "fieldname": "column_break_access",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "300",
+   "fieldname": "rate_limit_per_day",
+   "fieldtype": "Int",
+   "label": "Requests per User per Day"
+  },
+  {
+   "default": "0",
+   "description": "AI tokens (prompt + answer) one user may use per day; 0 = no limit. Keeps the cost of a paid provider in check.",
+   "fieldname": "token_limit_per_user_per_day",
+   "fieldtype": "Int",
+   "label": "Tokens per User per Day"
+  },
+  {
+   "default": "90",
+   "fieldname": "log_retention_days",
+   "fieldtype": "Int",
+   "label": "Query Log Retention (days)"
+  },
+  {
+   "description": "The provider and model above are the company default that every user gets. Here you decide what users may change for themselves (AI Assistant page > AI Model).",
+   "fieldname": "user_choice_section",
+   "fieldtype": "Section Break",
+   "label": "User's Own Provider / Model"
+  },
+  {
+   "default": "1",
+   "description": "Users can pick OpenRouter, OpenAI, Claude or Gemini with their own API key (official API URLs only; their key is stored encrypted and is never shown again).",
+   "fieldname": "allow_user_provider",
+   "fieldtype": "Check",
+   "label": "Users Can Choose Their Own Provider / Model"
+  },
+  {
+   "fieldname": "column_break_user_choice",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Free models only",
+   "depends_on": "allow_user_provider",
+   "description": "Without their own key, can users switch to another model of the company provider on the company's API key? Free models only = no extra cost (OpenRouter free models). Any model = they spend company credit. Not allowed = their own key is needed for any change.",
+   "fieldname": "company_key_models",
+   "fieldtype": "Select",
+   "label": "Other Models on Company Key",
+   "options": "Free models only\nAny model\nNot allowed"
+  },
+  {
+   "fieldname": "prompt_section",
+   "fieldtype": "Section Break",
+   "label": "System Prompt"
+  },
+  {
+   "description": "Leave empty to use the built-in prompt. Server-side security rules and the tool catalog are always added by the server and cannot be removed here.",
+   "fieldname": "system_prompt",
+   "fieldtype": "Long Text",
+   "label": "System Prompt"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-09 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid AI",
+ "name": "AI Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

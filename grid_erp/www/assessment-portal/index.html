@@ -1,0 +1,171 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<link rel="stylesheet" href="/assets/grid_erp/css/recruitment_assessment/proctoring.css?v=20261006c">
+
+<div class="proctor-shell" id="proctor-app">
+	<section class="proctor-topbar">
+		<div>
+			<h1>Assessment Portal</h1>
+			<p id="status-banner">Sign in to continue</p>
+		</div>
+		<div class="live-strip" id="live-strip" hidden>
+			<span data-live="screen">Screen Recording</span>
+			<span data-live="camera">Camera Active</span>
+			<span data-live="microphone">Microphone Active</span>
+			<span data-live="internet">Internet Connected</span>
+			<span data-live="timer">Timer</span>
+			<span data-live="fullscreen">Full Screen</span>
+		</div>
+	</section>
+
+	<section class="panel-grid" id="auth-panel">
+		<div class="proctor-panel">
+			<h2>Candidate Access</h2>
+			<div class="form-grid">
+				<input class="form-control" id="assignment-id" placeholder="Assignment ID" autocomplete="off">
+				<input class="form-control" id="candidate-id" placeholder="Candidate ID or Email" autocomplete="username">
+				<input class="form-control" id="access-token" placeholder="Token or Temporary Password" autocomplete="current-password">
+				<button class="btn btn-primary" id="login-btn">Continue</button>
+			</div>
+		</div>
+		<div class="proctor-panel">
+			<h2>Requirements</h2>
+			<p>Camera, microphone, screen sharing, fullscreen, supported browser, and active internet are mandatory before the assessment can start.</p>
+		</div>
+	</section>
+
+	<section class="proctor-panel welcome-panel" id="welcome-panel" hidden>
+		<div class="panel-head">
+			<div>
+				<h2 id="welcome-assessment-name">Assessment</h2>
+				<p id="welcome-candidate-summary"></p>
+			</div>
+		</div>
+		<div class="welcome-grid">
+			<div><strong>Duration</strong><span id="welcome-duration"></span></div>
+			<div><strong>Total Questions</strong><span id="welcome-total-questions"></span></div>
+			<div><strong>Expiry</strong><span id="welcome-expiry"></span></div>
+		</div>
+		<div class="notice-copy">
+			<p><b>Instructions</b></p>
+			<ul>
+				<li>Keep your webcam, microphone, and shared screen active throughout the assessment.</li>
+				<li>Do not switch tabs, refresh, use the back button, copy/paste, or open developer tools.</li>
+				<li>The assessment pauses if screen sharing or camera access stops.</li>
+				<li>Answers are auto-saved during the assessment.</li>
+			</ul>
+			<p><b>System Requirements</b></p>
+			<ul>
+				<li>Chrome or Edge browser</li>
+				<li>Working webcam and microphone</li>
+				<li>Screen sharing permission</li>
+				<li>Stable internet connection</li>
+			</ul>
+		</div>
+		<div class="action-row">
+			<button class="btn btn-default" id="welcome-cancel-btn">Cancel</button>
+			<button class="btn btn-primary" id="welcome-continue-btn">Continue</button>
+		</div>
+	</section>
+
+	<section class="proctor-panel consent-panel" id="consent-panel" hidden>
+		<div class="panel-head">
+			<div>
+				<h2>Assessment Monitoring Notice</h2>
+				<p>Consent & Privacy</p>
+			</div>
+		</div>
+		<div class="notice-copy">
+			<p>To ensure the integrity of this assessment, the following monitoring will be performed during your attempt:</p>
+			<ul>
+				<li>Your screen will be shared and recorded.</li>
+				<li>Your webcam will remain active throughout the assessment.</li>
+				<li>Your microphone may be recorded.</li>
+				<li>Periodic snapshots may be captured.</li>
+				<li>Assessment activity such as tab switching, fullscreen exit, copy/paste attempts, browser focus changes, and other violations will be logged.</li>
+				<li>Recordings and logs will only be used for recruitment, assessment verification, fraud prevention, auditing, and internal review.</li>
+				<li>Your data will be securely stored according to the organization's retention policy.</li>
+				<li>By proceeding, you consent to this monitoring.</li>
+			</ul>
+		</div>
+		<div class="consent-checks" id="consent-checks">
+			<label><input type="checkbox" data-consent-required> I have read and understood the monitoring policy.</label>
+			<label><input type="checkbox" data-consent-required> I consent to screen recording during the assessment.</label>
+			<label><input type="checkbox" data-consent-required> I consent to webcam monitoring during the assessment.</label>
+			<label><input type="checkbox" data-consent-required> I consent to microphone access during the assessment.</label>
+			<label><input type="checkbox" data-consent-required> I understand that leaving fullscreen, stopping screen sharing, disabling the webcam, or violating assessment rules may result in automatic submission or disqualification.</label>
+		</div>
+		<div class="action-row">
+			<button class="btn btn-default" id="consent-cancel-btn">Cancel</button>
+			<button class="btn btn-primary" id="consent-accept-btn" disabled>I Agree & Continue</button>
+		</div>
+	</section>
+
+	<section class="proctor-panel" id="system-panel" hidden>
+		<div class="panel-head">
+			<div>
+				<h2>System Check</h2>
+				<p id="candidate-summary"></p>
+			</div>
+			<div class="action-row">
+				<button class="btn btn-default" id="check-system-btn">Check System</button>
+				<button class="btn btn-primary" id="start-assessment-btn" disabled>Start Assessment</button>
+			</div>
+		</div>
+		<div class="check-grid" id="check-grid">
+			<div class="check-card pending" data-check="camera"><strong>Camera</strong><span>Pending</span></div>
+			<div class="check-card pending" data-check="microphone"><strong>Microphone</strong><span>Pending</span></div>
+			<div class="check-card pending" data-check="screen"><strong>Screen Share</strong><span>Pending</span></div>
+			<div class="check-card pending" data-check="browser"><strong>Browser Compatibility</strong><span>Pending</span></div>
+			<div class="check-card pending" data-check="internet"><strong>Internet Connection</strong><span>Pending</span></div>
+			<div class="check-card pending" data-check="fullscreen"><strong>Full Screen</strong><span>Pending</span></div>
+		</div>
+		<div class="mandatory-warning" id="mandatory-warning" hidden>
+			Camera, microphone and screen sharing are mandatory for this assessment.
+			<button class="btn btn-default btn-sm" id="retry-btn">Retry</button>
+		</div>
+	</section>
+
+	<section class="pause-overlay" id="pause-overlay" hidden>
+		<div class="pause-dialog">
+			<h2 id="pause-title">Assessment Paused</h2>
+			<p id="pause-message"></p>
+			<div class="action-row">
+				<button class="btn btn-primary" id="resume-share-btn">Resume Screen Share</button>
+				<button class="btn btn-default" id="submit-paused-btn">Submit Assessment</button>
+			</div>
+			<p class="grace-text" id="grace-text"></p>
+		</div>
+	</section>
+
+	<section id="assessment-panel" hidden>
+		<div class="assessment-actions">
+			<button class="btn btn-default" id="submit-btn">Submit</button>
+		</div>
+		<div id="assessment-box" class="question-list"></div>
+	</section>
+
+	<!-- Result panel shown after submission -->
+	<section id="result-panel" hidden style="text-align:center;padding:48px 24px">
+		<div id="result-icon" style="font-size:72px;margin-bottom:16px">🎉</div>
+		<h2 id="result-title" style="margin-bottom:8px">Assessment Submitted!</h2>
+		<p id="result-message" style="color:#555;margin-bottom:24px">Thank you for completing the assessment. Results will be shared soon.</p>
+		<div id="certificate-section" hidden style="margin-top:24px">
+			<a id="certificate-btn"
+			   href="#"
+			   class="btn btn-primary"
+			   style="font-size:16px;padding:12px 32px;text-decoration:none"
+			   target="_blank">
+				🏆 Download Your Certificate
+			</a>
+			<p style="color:#888;font-size:13px;margin-top:8px">You passed! Your certificate is ready.</p>
+		</div>
+	</section>
+
+	<video id="camera-preview" muted playsinline hidden></video>
+	<canvas id="snapshot-canvas" hidden></canvas>
+</div>
+
+<script src="/assets/grid_erp/js/recruitment_assessment/proctoring.js?v=20261006d" type="module"></script>
+{% endblock %}

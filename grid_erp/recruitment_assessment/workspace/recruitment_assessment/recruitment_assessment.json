@@ -1,0 +1,116 @@
+{
+ "app": "grid_erp",
+ "charts": [],
+ "content": "[{\"id\": \"RA-HEADER\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Recruitment Assessment</b></span>\", \"col\": 12}}, {\"id\": \"RA-CARD1\", \"type\": \"card\", \"data\": {\"card_name\": \"Assessment Operations\", \"col\": 4}}, {\"id\": \"RA-CARD2\", \"type\": \"card\", \"data\": {\"card_name\": \"Assessment Setup\", \"col\": 4}}, {\"id\": \"RA-CARD3\", \"type\": \"card\", \"data\": {\"card_name\": \"Follow-up Reports\", \"col\": 4}}]",
+ "creation": "2026-07-05 00:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "check-square",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Recruitment Assessment",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Operations",
+   "link_count": 3,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Assignment",
+   "link_to": "Assessment Assignment",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Attempt",
+   "link_to": "Assessment Attempt",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Notification",
+   "link_to": "Assessment Notification",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Setup",
+   "link_count": 3,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Template",
+   "link_to": "Assessment Template",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Question Bank",
+   "link_to": "Question Bank",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assessment Settings",
+   "link_to": "Assessment Settings",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Follow-up Reports",
+   "link_count": 2,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Pending Assessments",
+   "link_to": "Pending Assessments",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Expired Assessments",
+   "link_to": "Expired Assessments",
+   "link_type": "Report",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-06 22:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Recruitment Assessment",
+ "name": "Recruitment Assessment",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [],
+ "title": "Recruitment Assessment",
+ "type": "Workspace"
+}

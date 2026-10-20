@@ -1,0 +1,1133 @@
+/* Calco branding for the login page, desk home, operational pages and website pages.
+   Brand colours are set at runtime from Grid Branding Settings
+   (see calco_workspace_config.js and calco_branding.js). */
+
+:root {
+  --calco-red: #b32025;
+  --calco-red-deep: #8f1a1e;
+  --calco-graphite: #25272b;
+  --calco-home-header: #25282d;
+  --calco-ink: #36393e;
+  --calco-muted: #6b7077;
+  --calco-canvas: #fbfbfb;
+  --calco-surface: #ffffff;
+  --calco-border: #d9dadd;
+}
+
+/* ---------------------------------------------------------------------------
+   1. Login page
+   Wraps the standard Frappe auth forms in a two-column branded card.
+   --------------------------------------------------------------------------- */
+.calco-login-logo,
+.calco-desk-brand img,
+.navbar-brand img,
+.page-card-head .app-logo {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+body.calco-login-branded {
+  color: var(--calco-ink);
+}
+
+body.calco-login-branded main.container,
+body.calco-login-branded main.container .page_content,
+body.calco-login-branded main.container .page_content > div {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+body.calco-login-branded .page-card-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+}
+
+body.calco-login-branded .calco-auth-view {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  background: var(--calco-surface);
+  border: 1px solid var(--calco-border);
+}
+
+body.calco-login-branded section.calco-auth-view.calco-auth-active {
+  display: grid !important;
+}
+
+.calco-login-brand-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  color: #fff;
+  border-left: 7px solid var(--calco-red);
+}
+
+.calco-login-brand-panel::before,
+.calco-login-brand-panel::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.calco-login-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 30px;
+  background: #fff;
+}
+
+.calco-login-company,
+.calco-login-product,
+.calco-login-tagline,
+.calco-login-capabilities {
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0;
+}
+
+.calco-login-company {
+  max-width: 580px;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.calco-login-product {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.calco-login-tagline {
+  max-width: 520px;
+  margin: 38px 0 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.calco-login-capabilities {
+  margin: 10px 0 0;
+}
+
+.calco-login-form-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  background: var(--calco-surface);
+}
+
+body.calco-login-branded .login-content.page-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.calco-login-branded .calco-login-form-panel,
+body.calco-login-branded .login-content.page-card,
+body.calco-login-branded .login-content.page-card form,
+body.calco-login-branded .login-content.page-card .page-card-body,
+body.calco-login-branded .login-content.page-card .page-card-actions,
+body.calco-login-branded .login-content.page-card .form-group {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.calco-login-branded .page-card-head {
+  display: block;
+  text-align: left;
+}
+
+body.calco-login-branded .page-card-head .app-logo {
+  display: none;
+}
+
+body.calco-login-branded .page-card-head h4 {
+  margin: 0;
+  color: var(--calco-graphite);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+}
+
+body.calco-login-branded .page-card-head p,
+.calco-login-subtitle {
+  margin: 8px 0 0;
+  color: var(--calco-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+body.calco-login-branded .page-card .btn-primary,
+body.calco-login-branded .page-card-actions .btn-block[type="submit"] {
+  font-weight: 650;
+}
+
+body.calco-login-branded .page-card .btn-primary:hover,
+body.calco-login-branded .page-card .btn-primary:focus-visible,
+body.calco-login-branded .page-card-actions .btn-block[type="submit"]:hover,
+body.calco-login-branded .page-card-actions .btn-block[type="submit"]:focus-visible {
+  border-color: var(--calco-red-deep);
+  background: var(--calco-red-deep);
+}
+
+.calco-login-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  max-width: 430px;
+  margin: 36px auto 0;
+  color: var(--calco-muted);
+  line-height: 1.5;
+  border-top: 1px solid #e2e3e5;
+}
+
+@media (max-width: 991px) {
+  body.calco-login-branded .calco-auth-view {
+    grid-template-columns: 1fr;
+  }
+
+  .calco-login-brand-panel {
+    justify-content: flex-start;
+    padding: 28px 34px;
+    border-left-width: 5px;
+  }
+
+  .calco-login-logo {
+    width: 210px;
+    max-width: 76%;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .calco-login-company {
+    font-size: 26px;
+  }
+
+  .calco-login-tagline {
+    margin-top: 18px;
+    font-size: 15px;
+  }
+
+  .calco-login-brand-panel::before,
+  .calco-login-brand-panel::after {
+    display: none;
+  }
+
+  .calco-login-form-panel {
+    padding: 34px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.calco-login-branded .page-card-parent {
+    padding: 0;
+  }
+
+  body.calco-login-branded .calco-auth-view {
+    width: 100%;
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .calco-login-brand-panel {
+    padding: 22px 24px;
+  }
+
+  .calco-login-logo {
+    width: 150px;
+    max-width: 62%;
+    height: auto;
+    margin-bottom: 12px;
+  }
+
+  .calco-login-company {
+    font-size: 21px;
+  }
+
+  .calco-login-product,
+  .calco-login-tagline,
+  .calco-login-capabilities {
+    font-size: 12px;
+  }
+
+  .calco-login-tagline {
+    margin-top: 10px;
+  }
+
+  .calco-login-form-panel {
+    justify-content: flex-start;
+    padding: 28px 24px;
+  }
+
+  body.calco-login-branded .login-content.page-card {
+    width: 100%;
+    min-height: 0;
+  }
+
+  body.calco-login-branded .page-card .form-control,
+  body.calco-login-branded .page-card .btn-block {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body.calco-login-branded .page-card-head h4 {
+    font-size: 24px;
+  }
+
+  .calco-login-footer {
+    margin-top: 24px;
+  }
+}
+
+.calco-login-brand-panel::before {
+  inset: 34px 34px auto auto;
+  width: 180px;
+  height: 180px;
+}
+
+.calco-login-brand-panel::after {
+  right: 78px;
+  bottom: 52px;
+  width: 260px;
+  height: 110px;
+  border-color: rgba(179, 32, 37, 0.42);
+}
+
+body:not(.calco-login-branded) header.navbar .calco-desk-brand {
+  min-height: 54px;
+}
+
+body:not(.calco-login-branded) header.navbar .calco-desk-brand img {
+  width: 88px;
+  max-height: 54px;
+}
+
+body.calco-login-branded {
+  background: #f3f3f1;
+  border-top: 2px solid #5b332b;
+}
+
+body.calco-login-branded .page-card-parent {
+  min-height: 100vh;
+  padding: 40px 24px 20px;
+}
+
+body.calco-login-branded .calco-auth-view {
+  grid-template-columns: minmax(0, 55%) minmax(400px, 45%);
+  width: min(1120px, calc(100vw - 48px));
+  min-height: min(572px, calc(100vh - 84px));
+  border-radius: 4px;
+  box-shadow: 0 18px 44px rgba(35, 38, 43, 0.11);
+}
+
+.calco-login-brand-panel {
+  justify-content: center;
+  padding: 56px 60px;
+  background-color: #24272c;
+  background-image: linear-gradient(135deg, transparent 0 67%, rgba(179, 32, 37, 0.18) 67% 68%, transparent 68%),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+  linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: auto, 31px 31px, 31px 31px;
+  border-left-width: 6px;
+}
+
+.calco-login-logo {
+  width: 160px;
+  margin-bottom: 18px;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.calco-login-company {
+  font-size: 25px;
+  line-height: 1.18;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.32);
+}
+
+.calco-login-product {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 12px;
+  text-shadow: 0 1px 0 rgba(179, 32, 37, 0.8);
+}
+
+.calco-login-tagline {
+  margin-top: 30px;
+  font-size: 13px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.36);
+}
+
+.calco-login-capabilities {
+  font-size: 10px;
+  color: #f0f2f4;
+}
+
+.calco-login-form-panel {
+  padding: 64px 52px;
+}
+
+body.calco-login-branded .login-content.page-card,
+.calco-login-footer {
+  max-width: 402px;
+}
+
+body.calco-login-branded .page-card-head {
+  margin-bottom: 30px;
+}
+
+body.calco-login-branded .page-card-head h4 {
+  font-size: 21px;
+}
+
+body.calco-login-branded .page-card .form-control {
+  min-height: 30px;
+  border-color: #cbd4e2;
+  border-radius: 4px;
+  background: #eaf1fb;
+  font-size: 11px;
+}
+
+body.calco-login-branded .page-card label,
+body.calco-login-branded .page-card .forgot-password-message,
+body.calco-login-branded .page-card .forgot-password-message a,
+body.calco-login-branded .page-card .form-footer,
+body.calco-login-branded .page-card .page-card-actions .btn {
+  font-size: 10px;
+}
+
+body.calco-login-branded .page-card .btn-primary,
+body.calco-login-branded .page-card-actions .btn-block[type="submit"] {
+  min-height: 30px;
+  border-radius: 4px;
+  background: #bd2028;
+  border-color: #bd2028;
+  font-size: 11px;
+}
+
+body.calco-login-branded .btn-login-option {
+  min-height: 22px;
+  border-radius: 4px;
+  background: #f1f1f1;
+  font-size: 10px;
+}
+
+.calco-login-footer {
+  margin-top: 26px;
+  padding-top: 10px;
+  font-size: 8px;
+}
+
+@media (max-width: 899px) {
+  body.calco-login-branded .calco-auth-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  body.calco-login-branded .page-card-parent {
+    padding: 0;
+  }
+
+  body.calco-login-branded .calco-auth-view {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   2. Desk brand copy and operational brand bar
+   Logo + ERP name shown above every desk page except home.
+   --------------------------------------------------------------------------- */
+.calco-desk-brand-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding-left: 18px;
+  border-left: 1px solid #8d9095;
+}
+
+.calco-desk-brand-label {
+  color: var(--calco-graphite);
+  font-weight: 700;
+}
+
+.calco-desk-brand-copy small {
+  margin-top: 3px;
+  color: var(--calco-muted);
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.calco-operational-brandbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  min-height: 64px;
+  padding: 5px 18px;
+  background: #fff;
+  border-bottom: 1px solid #e3e4e6;
+  box-shadow: 0 2px 7px rgba(31, 33, 36, 0.035);
+}
+
+.calco-operational-brandbar img {
+  flex: 0 0 auto;
+  width: 82px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.calco-operational-brandbar .calco-desk-brand-label {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+body.calco-desk-home .calco-operational-brandbar {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------------
+   3. Desk home
+   Dark identity banner, workspace grid and footer.
+   --------------------------------------------------------------------------- */
+body.calco-desk-home .desktop-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--calco-canvas);
+}
+
+.calco-desktop-branded .desktop-navbar.calco-home-unified-banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  min-height: 119px;
+  padding: 13px 36px;
+  overflow: visible;
+  background: var(--calco-home-header);
+  border-bottom: 2px solid var(--calco-red);
+  box-shadow: 0 4px 15px rgba(31, 33, 36, 0.12);
+}
+
+.calco-home-unified-banner::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, rgba(31, 34, 39, 0.99) 0%, rgba(38, 41, 47, 0.97) 50%, rgba(38, 41, 47, 0.62) 72%, rgba(38, 41, 47, 0.18) 100%);
+  pointer-events: none;
+}
+
+.calco-home-navbar-image {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 0 auto;
+  width: 44%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.calco-home-unified-banner .navbar-home {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  flex: 0 1 560px;
+  gap: 14px;
+  min-width: 0;
+}
+
+.calco-home-unified-banner .navbar-home #brand-logo {
+  flex: 0 0 auto;
+  width: 84px;
+  max-width: 84px;
+  height: 92px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 4px;
+}
+
+.calco-home-unified-banner .calco-desk-brand-copy {
+  padding-left: 14px;
+  border-left-color: rgba(255, 255, 255, 0.34);
+}
+
+.calco-home-unified-banner .calco-desk-brand-label {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.15;
+}
+
+.calco-home-unified-banner .calco-desk-brand-copy small {
+  color: #fff;
+  font-size: 7.5px;
+  line-height: 1.2;
+}
+
+.calco-home-nav-capabilities,
+.calco-home-nav-values {
+  display: block;
+  font-weight: 750;
+  line-height: 1.25;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.calco-home-nav-capabilities {
+  margin-top: 12px;
+  color: #ff4750;
+  font-size: 8px;
+}
+
+.calco-home-nav-capabilities i {
+  padding: 0 5px;
+  font-style: normal;
+}
+
+.calco-home-nav-values {
+  margin-top: 4px;
+  color: #f1f2f4;
+  font-size: 7.5px;
+  letter-spacing: 0.04em;
+}
+
+.calco-home-nav-description {
+  display: block;
+  max-width: 280px;
+  margin-top: 5px;
+  color: #e3e5e8;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.calco-home-unified-banner .desktop-search-wrapper {
+  position: relative;
+  z-index: 3;
+  flex: 0 1 288px;
+  width: 288px;
+  max-width: 288px;
+  margin: 8px auto 0;
+  align-self: flex-start;
+}
+
+.calco-home-unified-banner .desktop-navbar-modal-search {
+  min-height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.calco-home-unified-banner .navbar-nav,
+.calco-home-unified-banner .desktop-navbar-right {
+  position: relative;
+  z-index: 3;
+  align-self: flex-start;
+  margin-top: 7px;
+  gap: 6px;
+}
+
+.calco-home-unified-banner .navbar-nav .icon,
+.calco-home-unified-banner .navbar-nav svg {
+  color: #fff;
+}
+
+.calco-home-intro,
+.calco-desktop-branded > .desktop-container {
+  width: 100%;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.calco-home-intro {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.calco-home-workspaces-bar {
+  display: flex;
+  align-items: center;
+  min-height: 49px;
+}
+
+.calco-home-workspaces-bar h2 {
+  margin: 0;
+  color: #202329;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.calco-desktop-branded > .desktop-container {
+  padding: 0 0 30px;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container {
+  margin: 0;
+  padding: 4px 0 0;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons {
+  display: grid !important;
+  grid-template-columns: repeat(6, 150px) !important;
+  gap: 12px 10px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 150px;
+  min-width: 0;
+  height: 85px;
+  min-height: 85px;
+  gap: 7px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #dfe1e4;
+  border-radius: 9px;
+  box-shadow: 0 2px 7px rgba(31, 33, 36, 0.04);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon:hover,
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon:focus-visible {
+  border-color: var(--calco-red);
+  box-shadow: 0 5px 14px rgba(31, 33, 36, 0.1);
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-container {
+  display: grid !important;
+  flex: 0 0 38px;
+  width: 38px;
+  min-width: 0;
+  height: 38px;
+  min-height: 0;
+  margin: 0 auto !important;
+  place-items: center;
+  color: var(--calco-red);
+  background: #f8eaeb;
+  border: 1px solid #efd5d7;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-container > * {
+  margin: 0 !important;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-container > svg,
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-container > img {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+/* Folder workspaces (e.g. Accounting) show a 2x2 preview of their children. */
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon {
+  padding: 0 !important;
+  background: #f8eaeb !important;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon > .icons-container {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon .icons {
+  display: grid !important;
+  grid-template-columns: repeat(2, 13px) !important;
+  grid-template-rows: repeat(2, 13px) !important;
+  gap: 3px !important;
+  width: auto !important;
+  height: auto !important;
+  justify-content: center;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon .desktop-icon {
+  display: block;
+  width: 13px;
+  min-width: 0;
+  height: 13px;
+  min-height: 0;
+  padding: 0;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon .desktop-icon:nth-child(n + 5),
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon .icon-caption {
+  display: none !important;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon .desktop-icon .icon-container,
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .folder-icon .desktop-icon img {
+  display: block;
+  width: 13px;
+  min-width: 0;
+  height: 13px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-container.calco-workspace-logo-holder {
+  background: #fff;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-container .calco-workspace-logo-mark {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* HR icons (home tiles and folder pop-ups) that show the brand logo. */
+.desktop-icon img.app-icon.calco-workspace-logo-mark {
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon > .icon-caption {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 20px;
+  margin: 0 !important;
+}
+
+.calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon .icon-title {
+  display: block;
+  width: 100%;
+  color: #111827;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center !important;
+  white-space: normal;
+}
+
+/* Footer */
+.calco-home-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 36px;
+  margin-top: auto;
+  padding: 8px 32px;
+  color: #666b73;
+  font-size: 8px;
+  background: #fff;
+  border-top: 1px solid #e0e2e5;
+}
+
+.calco-home-footer-left,
+.calco-home-footer-right,
+.calco-secure-connection {
+  display: flex;
+  align-items: center;
+}
+
+.calco-secure-connection {
+  gap: 6px;
+}
+
+.calco-home-footer-left > *,
+.calco-home-footer-right > * {
+  padding: 0 18px;
+  border-right: 1px solid #bfc2c6;
+}
+
+.calco-home-footer-left > :first-child {
+  padding-left: 0;
+  color: #202329;
+}
+
+.calco-home-footer-left > :last-child,
+.calco-home-footer-right > :last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.calco-home-footer-right strong {
+  color: #666b73;
+  font-weight: 500;
+}
+
+@media (max-width: 1199px) {
+  .calco-home-intro,
+  .calco-desktop-branded > .desktop-container {
+    max-width: 798px;
+  }
+
+  .calco-desktop-branded > .desktop-container > .icons-container > .icons {
+    grid-template-columns: repeat(5, 150px) !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .calco-home-intro,
+  .calco-desktop-branded > .desktop-container {
+    max-width: none;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .calco-desktop-branded > .desktop-container > .icons-container > .icons {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .calco-desktop-branded > .desktop-container > .icons-container > .icons > .desktop-icon {
+    width: 100%;
+  }
+
+  .calco-home-nav-description {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .calco-desktop-branded .desktop-navbar.calco-home-unified-banner {
+    align-items: center;
+    min-height: 68px;
+    padding: 5px 14px;
+  }
+
+  .calco-home-unified-banner .navbar-home {
+    flex: 0 0 auto;
+  }
+
+  .calco-home-unified-banner .navbar-home #brand-logo {
+    width: 58px;
+    max-width: 58px;
+    height: 54px;
+  }
+
+  .calco-home-unified-banner .calco-desk-brand-copy,
+  .calco-home-navbar-image {
+    display: none;
+  }
+
+  .calco-home-unified-banner .desktop-search-wrapper {
+    width: auto;
+    min-width: 0;
+    margin: 0 8px;
+    align-self: center;
+  }
+
+  .calco-home-unified-banner .navbar-nav,
+  .calco-home-unified-banner .desktop-navbar-right {
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .calco-desktop-branded > .desktop-container > .icons-container > .icons {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .calco-home-footer {
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    padding: 8px 14px;
+  }
+
+  .calco-home-footer-left,
+  .calco-home-footer-right {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   4. Website pages
+   /jobs, the assessment portal, the interview portal and other website pages
+   in the look of the login page: dark grid brand bar with the red edge, the
+   logo on a white tile, a light page and the content on a white card.
+   calco_branding.js puts the brand into the website navbar too, which is
+   <nav class="navbar"> (not header.navbar as in the Desk), so it is sized here.
+   --------------------------------------------------------------------------- */
+body:not(.calco-login-branded):not([data-path="login"]) {
+  background: #f3f3f1;
+  border-top: 2px solid #5b332b;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar {
+  padding: 12px 0;
+  background-color: #24272c;
+  background-image: linear-gradient(135deg, transparent 0 80%, rgba(179, 32, 37, 0.22) 80% 80.6%, transparent 80.6%),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+  linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: auto, 31px 31px, 31px 31px;
+  border-bottom: 0;
+  border-left: 6px solid var(--calco-red);
+  box-shadow: 0 8px 24px rgba(35, 38, 43, 0.12);
+}
+
+nav.navbar .calco-desk-brand {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-right: 20px;
+}
+
+nav.navbar .calco-desk-brand img {
+  flex-shrink: 0;
+  width: auto;
+  max-width: 72px;
+  height: auto;
+  max-height: 52px;
+  padding: 3px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+nav.navbar .calco-desk-brand-copy {
+  margin-left: 16px;
+  padding-left: 16px;
+  line-height: 1.2;
+  border-left-color: rgba(255, 255, 255, 0.28);
+}
+
+nav.navbar .calco-desk-brand-label {
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(179, 32, 37, 0.8);
+}
+
+nav.navbar .calco-desk-brand-copy small {
+  color: #f0f2f4;
+  font-size: 9px;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .navbar-brand,
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .navbar-nav > li > .nav-link,
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .nav-link.btn-login-area {
+  color: #fff;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .navbar-nav > li > .nav-link:hover,
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .navbar-brand:hover {
+  color: #f3c7c9;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) nav.navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .page-breadcrumbs {
+  padding-top: 20px;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .page-content-wrapper > main.container {
+  margin-top: 16px;
+  margin-bottom: 40px;
+  padding: 32px 40px;
+  background: var(--calco-surface);
+  border: 1px solid var(--calco-border);
+  border-radius: 4px;
+  box-shadow: 0 18px 44px rgba(35, 38, 43, 0.11);
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .page-content-wrapper h1,
+body:not(.calco-login-branded):not([data-path="login"]) .page-content-wrapper h2,
+body:not(.calco-login-branded):not([data-path="login"]) .page-content-wrapper h3 {
+  color: var(--calco-graphite);
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .btn-primary {
+  background: #bd2028;
+  border-color: #bd2028;
+  color: #fff;
+  font-weight: 650;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .btn-primary:hover,
+body:not(.calco-login-branded):not([data-path="login"]) .btn-primary:focus-visible {
+  background: var(--calco-red-deep);
+  border-color: var(--calco-red-deep);
+  color: #fff;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .page-content-wrapper .form-control {
+  border-color: #cbd4e2;
+  border-radius: 4px;
+  background: #eaf1fb;
+}
+
+body:not(.calco-login-branded):not([data-path="login"]) .web-footer {
+  background: transparent;
+  border-top: 0;
+  color: var(--calco-muted);
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  body:not(.calco-login-branded):not([data-path="login"]) .page-content-wrapper > main.container {
+    margin-top: 8px;
+    padding: 22px 16px;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  nav.navbar .calco-desk-brand img {
+    max-width: 56px;
+    max-height: 42px;
+  }
+
+  nav.navbar .calco-desk-brand-copy small {
+    display: none;
+  }
+}

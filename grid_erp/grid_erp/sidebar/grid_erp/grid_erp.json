@@ -1,0 +1,33 @@
+{
+ "app": "grid_erp",
+ "creation": "2026-10-16 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Sidebar",
+ "header_icon": "layout-grid",
+ "idx": 0,
+ "items": [
+  {
+   "added": 0,
+   "child": 0,
+   "collapsible": 1,
+   "hidden": 0,
+   "icon": "palette",
+   "indent": 0,
+   "is_default_module": 0,
+   "keep_closed": 0,
+   "label": "Branding Settings",
+   "link_to": "Grid Branding Settings",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-16 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid ERP",
+ "name": "Grid ERP",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Grid ERP"
+}

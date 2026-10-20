@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "creation": "2026-10-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_section",
+  "default_instance",
+  "default_country_code",
+  "column_break_general",
+  "queue_enabled",
+  "test_mode",
+  "retry_section",
+  "retry_enabled",
+  "max_retries",
+  "column_break_retry",
+  "retry_delay",
+  "behaviour_section",
+  "failure_behavior",
+  "allow_manual_resend",
+  "column_break_behaviour",
+  "debug_logging"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "description": "Used by rules that do not select an instance.",
+   "fieldname": "default_instance",
+   "fieldtype": "Link",
+   "label": "Default WhatsApp Instance",
+   "options": "WhatsApp Instance"
+  },
+  {
+   "description": "Digits only, e.g. 91 (India), 971 (UAE), 1 (USA). Added to numbers that have no country code.",
+   "fieldname": "default_country_code",
+   "fieldtype": "Data",
+   "label": "Default Country Code"
+  },
+  {
+   "fieldname": "column_break_general",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Recommended. Messages are sent by a background worker, so saving or submitting a document never waits for the WhatsApp API.",
+   "fieldname": "queue_enabled",
+   "fieldtype": "Check",
+   "label": "Send in Background"
+  },
+  {
+   "description": "Resolve and log every message, but do not call the provider API.",
+   "fieldname": "test_mode",
+   "fieldtype": "Check",
+   "label": "Test Mode"
+  },
+  {
+   "fieldname": "retry_section",
+   "fieldtype": "Section Break",
+   "label": "Retries"
+  },
+  {
+   "default": "1",
+   "description": "Only temporary failures (timeouts, provider errors) are retried. Invalid numbers, missing variables and rejected templates fail at once.",
+   "fieldname": "retry_enabled",
+   "fieldtype": "Check",
+   "label": "Retry Failed Messages"
+  },
+  {
+   "default": "3",
+   "depends_on": "retry_enabled",
+   "fieldname": "max_retries",
+   "fieldtype": "Int",
+   "label": "Max Retries"
+  },
+  {
+   "fieldname": "column_break_retry",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "5",
+   "depends_on": "retry_enabled",
+   "fieldname": "retry_delay",
+   "fieldtype": "Int",
+   "label": "Retry Delay (Minutes)"
+  },
+  {
+   "fieldname": "behaviour_section",
+   "fieldtype": "Section Break",
+   "label": "Behaviour"
+  },
+  {
+   "default": "Log Only",
+   "description": "Applies to errors while the document is being saved (e.g. an invalid condition). API failures never block documents.",
+   "fieldname": "failure_behavior",
+   "fieldtype": "Select",
+   "label": "When Queuing a Notification Fails",
+   "options": "Log Only\nShow Message\nBlock Document"
+  },
+  {
+   "default": "1",
+   "description": "Show a Resend button on sent messages in WhatsApp Notification Log.",
+   "fieldname": "allow_manual_resend",
+   "fieldtype": "Check",
+   "label": "Allow Manual Resend"
+  },
+  {
+   "fieldname": "column_break_behaviour",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Write the reason for every skipped rule/recipient to the grid_whatsapp log file.",
+   "fieldname": "debug_logging",
+   "fieldtype": "Check",
+   "label": "Debug Logging"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid WhatsApp",
+ "name": "WhatsApp Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

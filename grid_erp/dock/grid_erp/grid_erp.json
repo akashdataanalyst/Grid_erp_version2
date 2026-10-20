@@ -1,0 +1,55 @@
+{
+ "app": "grid_erp",
+ "creation": "2026-10-16 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Dock",
+ "idx": 0,
+ "items": [
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "message-circle",
+   "link_to": "Grid WhatsApp",
+   "link_type": "Sidebar",
+   "title": "WhatsApp"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "clipboard-check",
+   "link_to": "Recruitment Assessment",
+   "link_type": "Sidebar",
+   "title": "Recruitment Assessment"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "video",
+   "link_to": "Grid Interview",
+   "link_type": "Sidebar",
+   "title": "Interviews"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "sparkles",
+   "link_to": "Grid AI",
+   "link_type": "Sidebar",
+   "title": "AI Assistant"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "palette",
+   "link_to": "Grid ERP",
+   "link_type": "Sidebar",
+   "title": "Branding"
+  }
+ ],
+ "modified": "2026-10-20 12:30:00.000000",
+ "modified_by": "Administrator",
+ "name": "grid_erp",
+ "owner": "Administrator",
+ "standard": 1,
+ "user": ""
+}

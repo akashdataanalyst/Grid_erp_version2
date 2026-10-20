@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "autoname": "AST-QTN-.YYYY.-.#####",
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "question_title",
+  "disabled",
+  "question_type",
+  "category",
+  "assessment_section",
+  "marks",
+  "negative_marking",
+  "difficulty",
+  "question_text",
+  "options",
+  "correct_answer",
+  "coding_language",
+  "sql_schema",
+  "expected_output",
+  "attachments"
+ ],
+ "fields": [
+  {"fieldname": "question_title", "fieldtype": "Data", "label": "Question Title", "reqd": 1, "in_list_view": 1},
+  {"default": "0", "fieldname": "disabled", "fieldtype": "Check", "label": "Disabled"},
+  {"fieldname": "question_type", "fieldtype": "Select", "label": "Question Type", "options": "Single Choice MCQ\nMultiple Choice\nTrue/False\nShort Answer\nLong Answer\nCoding Question\nSQL Query\nFile Upload\nImage-based Question\nVideo Response\nRandom Question Bank", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "category", "fieldtype": "Data", "label": "Category", "in_list_view": 1},
+  {"fieldname": "assessment_section", "fieldtype": "Link", "label": "Assessment Section", "options": "Assessment Section"},
+  {"default": "1", "fieldname": "marks", "fieldtype": "Float", "label": "Marks"},
+  {"default": "0", "fieldname": "negative_marking", "fieldtype": "Float", "label": "Negative Marking"},
+  {"fieldname": "difficulty", "fieldtype": "Select", "label": "Difficulty", "options": "Easy\nMedium\nHard"},
+  {"fieldname": "question_text", "fieldtype": "Text Editor", "label": "Question Text"},
+  {"fieldname": "options", "fieldtype": "Table", "label": "Options", "options": "Question Option"},
+  {"fieldname": "correct_answer", "fieldtype": "Small Text", "label": "Correct Answer"},
+  {"fieldname": "coding_language", "fieldtype": "Data", "label": "Coding Language"},
+  {"fieldname": "sql_schema", "fieldtype": "Text Editor", "label": "SQL Schema"},
+  {"fieldname": "expected_output", "fieldtype": "Small Text", "label": "Expected Output"},
+  {"fieldname": "attachments", "fieldtype": "Attach", "label": "Attachment"}
+ ],
+ "module": "Recruitment Assessment",
+ "name": "Question Bank",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "share": 1},
+  {"role": "HR User", "read": 1, "write": 1, "create": 1, "report": 1, "share": 1},
+  {"role": "Recruiter", "read": 1, "write": 1, "create": 1, "report": 1, "share": 1}
+ ],
+ "title_field": "question_title"
+}

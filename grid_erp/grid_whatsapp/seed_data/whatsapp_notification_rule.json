@@ -1,0 +1,57 @@
+[
+ {
+  "rule_name": "Leave Applied - Notify Approver",
+  "enabled": 1,
+  "document_type": "Leave Application",
+  "event": "After Insert",
+  "template": "Leave Application - Approver",
+  "whatsapp_instance": "Calco Evolution",
+  "priority": 10,
+  "description": "New Leave Application saved -> WhatsApp to its Leave Approver. Number: approver's User mobile_no, else their Employee cell_number. DISABLED until numbers are filled and go-ahead is given.",
+  "condition_type": "Always",
+  "queue_enabled": 1,
+  "allow_duplicate": 0,
+  "allow_duplicate_recipient": 0,
+  "doctype": "WhatsApp Notification Rule",
+  "recipients": [
+   {
+    "enabled": 1,
+    "label": "Leave Approver",
+    "recipient_type": "Document Link",
+    "source_field": "leave_approver",
+    "source_doctype": "User",
+    "contact_resolution": "Auto",
+    "required": 1,
+    "doctype": "WhatsApp Notification Recipient"
+   }
+  ]
+ },
+ {
+  "rule_name": "Leave Approved/Rejected - Notify Employee",
+  "enabled": 1,
+  "document_type": "Leave Application",
+  "event": "After Submit",
+  "template": "Leave Application - Status to Employee",
+  "whatsapp_instance": "Calco Evolution",
+  "priority": 0,
+  "description": "Approver submits the Leave Application (Approved/Rejected) -> WhatsApp to the Employee (cell_number). DISABLED until go-ahead.",
+  "condition_type": "Expression",
+  "condition_expression": "status in (\"Approved\", \"Rejected\")",
+  "queue_enabled": 1,
+  "allow_duplicate": 0,
+  "allow_duplicate_recipient": 0,
+  "doctype": "WhatsApp Notification Rule",
+  "recipients": [
+   {
+    "enabled": 1,
+    "label": "Employee",
+    "recipient_type": "Document Link",
+    "source_field": "employee",
+    "source_doctype": "Employee",
+    "contact_resolution": "Auto",
+    "required": 1,
+    "doctype": "WhatsApp Notification Recipient"
+   }
+  ]
+ }
+]

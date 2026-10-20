@@ -1,0 +1,179 @@
+/* Workspace pages share the desk home look: white rounded cards, a red icon
+   chip and centred titles. Only presentation changes; routes and permissions
+   stay native. */
+#page-Workspaces .ce-header,
+#page-Workspaces .ce-header .h4 {
+  margin: 14px 0 4px;
+  color: #202329;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+#page-Workspaces .widget.shortcut-widget-box,
+#page-Workspaces .widget.links-widget-box,
+#page-Workspaces .widget.number-widget-box,
+#page-Workspaces .widget.dashboard-widget-box,
+#page-Workspaces .widget.quick-list-widget-box {
+  background: #fff;
+  border: 1px solid #dfe1e4;
+  border-radius: 9px;
+  box-shadow: 0 2px 7px rgba(31, 33, 36, 0.04);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+#page-Workspaces .widget.shortcut-widget-box:hover,
+#page-Workspaces .widget.links-widget-box:hover,
+#page-Workspaces .widget.number-widget-box:hover {
+  border-color: var(--calco-red);
+  box-shadow: 0 5px 14px rgba(31, 33, 36, 0.1);
+}
+
+/* Shortcut tiles */
+#page-Workspaces .ce-block:has(> .ce-block__content .shortcut-widget-box) {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 5px;
+}
+
+#page-Workspaces .widget.shortcut-widget-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 104px;
+  padding: 12px 12px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#page-Workspaces .widget.shortcut-widget-box:focus-visible {
+  outline: 2px solid var(--calco-red);
+  outline-offset: 2px;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-body,
+#page-Workspaces .shortcut-widget-box .widget-footer {
+  display: none;
+}
+
+#page-Workspaces .calco-card-icon {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: var(--calco-red);
+  background: #f8eaeb;
+  border: 1px solid #efd5d7;
+  border-radius: 9px;
+}
+
+#page-Workspaces .calco-card-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-label {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-title,
+#page-Workspaces .shortcut-widget-box .widget-title .ellipsis {
+  display: block;
+  max-width: none;
+  overflow: visible;
+  color: #111827;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-subtitle {
+  display: block;
+  margin-top: 3px;
+  color: #6b7077;
+  font-size: 10.5px;
+  line-height: 1.3;
+  text-align: center;
+  white-space: normal;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-subtitle:empty {
+  display: none;
+}
+
+/* The open-arrow is redundant on a clickable tile; a count pill, if any, sits top-right. */
+#page-Workspaces .shortcut-widget-box .widget-control {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  margin: 0;
+}
+
+#page-Workspaces .shortcut-widget-box .widget-control > svg {
+  display: none;
+}
+
+#page-Workspaces .shortcut-widget-box .indicator-pill {
+  font-size: 10px;
+  color: #344054;
+  background: #eef1f6;
+}
+
+#page-Workspaces .shortcut-widget-box[data-useful-count="false"] .indicator-pill {
+  display: none;
+}
+
+/* Link cards and number cards */
+#page-Workspaces .links-widget-box .widget-title,
+#page-Workspaces .number-widget-box .widget-title,
+#page-Workspaces .dashboard-widget-box .widget-title {
+  color: #202329;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#page-Workspaces .links-widget-box .link-item:hover .link-text {
+  color: var(--calco-red);
+}
+
+#page-Workspaces .number-widget-box .widget-title,
+#page-Workspaces .number-widget-box .widget-title .ellipsis {
+  overflow: visible;
+  white-space: normal;
+}
+
+#page-Workspaces .number-widget-box .number {
+  color: #202329;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media (max-width: 1199px) {
+  #page-Workspaces .ce-block:has(> .ce-block__content .shortcut-widget-box) {
+    flex-basis: 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+@media (max-width: 767px) {
+  #page-Workspaces .ce-block:has(> .ce-block__content .shortcut-widget-box) {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}

@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_in_quick_entry": 1,
+ "creation": "2026-07-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_name",
+  "source_type",
+  "question_bank",
+  "question_count",
+  "randomize_questions",
+  "shuffle_options",
+  "marks_override",
+  "description"
+ ],
+ "fields": [
+  {"fieldname": "section_name", "fieldtype": "Data", "label": "Section Name", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "source_type", "fieldtype": "Select", "label": "Source Type", "options": "Question Bank\nRandom Question Bank", "default": "Question Bank"},
+  {"fieldname": "question_bank", "fieldtype": "Link", "label": "Question Bank", "options": "Question Bank"},
+  {"fieldname": "question_count", "fieldtype": "Int", "label": "Question Count", "default": "0"},
+  {"default": "1", "fieldname": "randomize_questions", "fieldtype": "Check", "label": "Randomize Questions"},
+  {"default": "1", "fieldname": "shuffle_options", "fieldtype": "Check", "label": "Shuffle Options"},
+  {"fieldname": "marks_override", "fieldtype": "Float", "label": "Marks Override"},
+  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"}
+ ],
+ "istable": 1,
+ "module": "Recruitment Assessment",
+ "name": "Assessment Section",
+ "permissions": []
+}

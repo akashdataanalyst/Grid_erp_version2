@@ -1,0 +1,208 @@
+{
+ "actions": [],
+ "autoname": "field:rule_name",
+ "creation": "2026-10-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rule_name",
+  "enabled",
+  "document_type",
+  "event",
+  "value_changed_field",
+  "workflow_state",
+  "column_break_main",
+  "template",
+  "whatsapp_instance",
+  "priority",
+  "description",
+  "condition_section",
+  "condition_type",
+  "condition_expression",
+  "recipients_section",
+  "recipients",
+  "delivery_section",
+  "queue_enabled",
+  "allow_duplicate",
+  "column_break_delivery",
+  "allow_duplicate_recipient"
+ ],
+ "fields": [
+  {
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "label": "Rule Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Document Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "default": "After Submit",
+   "fieldname": "event",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Send When",
+   "options": "After Insert\nAfter Save\nAfter Submit\nAfter Cancel\nOn Update\nOn Value Change\nWorkflow State Change\nManual",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.event=='On Value Change'",
+   "description": "Send when this field changes, e.g. status or custom_approval_status.",
+   "fieldname": "value_changed_field",
+   "fieldtype": "Autocomplete",
+   "label": "Field",
+   "mandatory_depends_on": "eval:doc.event=='On Value Change'"
+  },
+  {
+   "depends_on": "eval:doc.event=='Workflow State Change'",
+   "description": "Optional. Only when the document moves to this state, e.g. Approved.",
+   "fieldname": "workflow_state",
+   "fieldtype": "Data",
+   "label": "Workflow State"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "WhatsApp Template",
+   "options": "WhatsApp Template",
+   "reqd": 1
+  },
+  {
+   "description": "Blank = default instance from WhatsApp Settings.",
+   "fieldname": "whatsapp_instance",
+   "fieldtype": "Link",
+   "label": "WhatsApp Instance",
+   "options": "WhatsApp Instance"
+  },
+  {
+   "default": "0",
+   "description": "Rules with a higher priority are processed first.",
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "condition_section",
+   "fieldtype": "Section Break",
+   "label": "Condition"
+  },
+  {
+   "default": "Always",
+   "fieldname": "condition_type",
+   "fieldtype": "Select",
+   "label": "Condition Type",
+   "options": "Always\nExpression"
+  },
+  {
+   "depends_on": "eval:doc.condition_type=='Expression'",
+   "description": "Examples: docstatus == 1 | grand_total > 500000 | status == \"Accepted\" and company == \"ABC\" | supplier.supplier_group in [\"Raw Material\", \"Packing\"] | previous.status != status. Only fields, comparisons, and/or/not and arithmetic are allowed; no function calls.",
+   "fieldname": "condition_expression",
+   "fieldtype": "Code",
+   "label": "Condition",
+   "mandatory_depends_on": "eval:doc.condition_type=='Expression'",
+   "options": "Python"
+  },
+  {
+   "fieldname": "recipients_section",
+   "fieldtype": "Section Break",
+   "label": "Recipients"
+  },
+  {
+   "fieldname": "recipients",
+   "fieldtype": "Table",
+   "label": "Recipients",
+   "options": "WhatsApp Notification Recipient"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery"
+  },
+  {
+   "default": "1",
+   "description": "Also needs Send in Background in WhatsApp Settings.",
+   "fieldname": "queue_enabled",
+   "fieldtype": "Check",
+   "label": "Send in Background"
+  },
+  {
+   "description": "Off: each document gets this message once per trigger. On: every matching save/change sends again.",
+   "fieldname": "allow_duplicate",
+   "fieldtype": "Check",
+   "label": "Send on Every Trigger"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Send separately even when several recipient rows resolve to the same number.",
+   "fieldname": "allow_duplicate_recipient",
+   "fieldtype": "Check",
+   "label": "Allow Duplicate Recipient"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid WhatsApp",
+ "name": "WhatsApp Notification Rule",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "WhatsApp Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

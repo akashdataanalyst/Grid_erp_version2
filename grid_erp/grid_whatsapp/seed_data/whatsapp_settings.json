@@ -1,0 +1,13 @@
+{
+ "default_instance": "Calco Evolution",
+ "default_country_code": "91",
+ "queue_enabled": 1,
+ "test_mode": 0,
+ "retry_enabled": 0,
+ "max_retries": 1,
+ "retry_delay": 5,
+ "failure_behavior": "Log Only",
+ "allow_manual_resend": 1,
+ "debug_logging": 0,
+ "doctype": "WhatsApp Settings"
+}

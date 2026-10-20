@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "creation": "2026-10-08 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fieldname",
+  "label",
+  "fieldtype",
+  "options",
+  "allow_display",
+  "allow_filter",
+  "allow_group_by",
+  "allow_aggregate"
+ ],
+ "fields": [
+  {
+   "fieldname": "fieldname",
+   "fieldtype": "Autocomplete",
+   "in_list_view": 1,
+   "label": "Fieldname",
+   "reqd": 1
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Label",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fieldtype",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "options",
+   "fieldtype": "Data",
+   "label": "Options",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "description": "AI may show this field's value in lists.",
+   "fieldname": "allow_display",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Display"
+  },
+  {
+   "default": "1",
+   "description": "AI may filter by this field.",
+   "fieldname": "allow_filter",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Filter"
+  },
+  {
+   "default": "0",
+   "description": "AI may group results by this field.",
+   "fieldname": "allow_group_by",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Group By"
+  },
+  {
+   "default": "0",
+   "description": "AI may compute sum / average / min / max of this numeric field.",
+   "fieldname": "allow_aggregate",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Aggregate"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-08 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid AI",
+ "name": "AI Tool Field",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

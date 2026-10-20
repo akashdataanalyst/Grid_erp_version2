@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "creation": "2026-10-05 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "label",
+  "recipient_type",
+  "source_field",
+  "source_doctype",
+  "source",
+  "fixed_number",
+  "column_break_resolution",
+  "contact_resolution",
+  "mobile_field",
+  "required",
+  "filter_section",
+  "record_filter_field",
+  "column_break_filter",
+  "document_filter_field"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "columns": 2,
+   "description": "Name shown in logs, e.g. Supplier, Purchase Manager.",
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Label"
+  },
+  {
+   "columns": 2,
+   "default": "Document Link",
+   "fieldname": "recipient_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Recipient Type",
+   "options": "Document Field\nDocument Link\nEmployee\nUser\nRole\nCustomer\nSupplier\nLead\nContact\nFixed Number\nWorkflow Approver",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "description": "Field path on the document. Document Field: holds the number (e.g. contact_mobile). Document Link: a Link field (e.g. supplier). Employee/User/Customer/Supplier/Lead/Contact: a field holding that record (e.g. employee, owner).",
+   "fieldname": "source_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source Field"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Source DocType",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:!['Document Field','Document Link','Fixed Number','Workflow Approver'].includes(doc.recipient_type)",
+   "description": "A fixed record used when Source Field is blank. For Role, the role to notify.",
+   "fieldname": "source",
+   "fieldtype": "Dynamic Link",
+   "label": "Fixed Record",
+   "options": "source_doctype"
+  },
+  {
+   "depends_on": "eval:doc.recipient_type=='Fixed Number'",
+   "fieldname": "fixed_number",
+   "fieldtype": "Data",
+   "label": "Fixed Number",
+   "mandatory_depends_on": "eval:doc.recipient_type=='Fixed Number'"
+  },
+  {
+   "fieldname": "column_break_resolution",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "default": "Auto",
+   "depends_on": "eval:!['Document Field','Fixed Number'].includes(doc.recipient_type)",
+   "description": "Auto: primary contact, then the record's own mobile field, then any linked Contact.",
+   "fieldname": "contact_resolution",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Contact Resolution",
+   "options": "Auto\nPrimary Contact\nRecord Field\nLinked Contact"
+  },
+  {
+   "depends_on": "eval:!['Document Field','Fixed Number'].includes(doc.recipient_type)",
+   "description": "Field holding the number on the record or Contact (fieldname or label, e.g. mobile_no). Blank = first phone field.",
+   "fieldname": "mobile_field",
+   "fieldtype": "Data",
+   "label": "Mobile Field"
+  },
+  {
+   "columns": 1,
+   "description": "Log a failure when no number is found. Otherwise the row is skipped.",
+   "fieldname": "required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Required"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:['Role','Workflow Approver','Employee'].includes(doc.recipient_type)",
+   "fieldname": "filter_section",
+   "fieldtype": "Section Break",
+   "label": "Filter People"
+  },
+  {
+   "description": "Only notify people whose Employee record has this field equal to the document field below, e.g. department.",
+   "fieldname": "record_filter_field",
+   "fieldtype": "Data",
+   "label": "Employee Field"
+  },
+  {
+   "fieldname": "column_break_filter",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "e.g. department or company.",
+   "fieldname": "document_filter_field",
+   "fieldtype": "Data",
+   "label": "Document Field"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid WhatsApp",
+ "name": "WhatsApp Notification Recipient",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,260 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-10-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "reference_doctype",
+  "reference_name",
+  "rule",
+  "event",
+  "column_break_main",
+  "recipient",
+  "recipient_label",
+  "recipient_type",
+  "template",
+  "whatsapp_instance",
+  "message_section",
+  "message",
+  "variables",
+  "delivery_section",
+  "message_id",
+  "request_reference",
+  "retry_count",
+  "next_retry_at",
+  "column_break_delivery",
+  "last_attempt_at",
+  "sent_at",
+  "delivered_at",
+  "read_at",
+  "result_section",
+  "error",
+  "response",
+  "idempotency_key"
+ ],
+ "fields": [
+  {
+   "default": "Queued",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Queued\nProcessing\nSent\nDelivered\nRead\nFailed\nCancelled",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Reference DocType",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reference Name",
+   "options": "reference_doctype",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "rule",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Rule",
+   "options": "WhatsApp Notification Rule",
+   "read_only": 1
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Data",
+   "label": "Trigger",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recipient",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Recipient",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recipient_label",
+   "fieldtype": "Data",
+   "label": "Recipient Label",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recipient_type",
+   "fieldtype": "Data",
+   "label": "Recipient Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "label": "Template",
+   "options": "WhatsApp Template",
+   "read_only": 1
+  },
+  {
+   "fieldname": "whatsapp_instance",
+   "fieldtype": "Link",
+   "label": "WhatsApp Instance",
+   "options": "WhatsApp Instance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "message_section",
+   "fieldtype": "Section Break",
+   "label": "Message"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variables",
+   "fieldtype": "Code",
+   "label": "Variables",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery"
+  },
+  {
+   "fieldname": "message_id",
+   "fieldtype": "Data",
+   "label": "Provider Message ID",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "request_reference",
+   "fieldtype": "Data",
+   "label": "Request Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_retry_at",
+   "fieldtype": "Datetime",
+   "label": "Next Retry At",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_attempt_at",
+   "fieldtype": "Datetime",
+   "label": "Last Attempt At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sent_at",
+   "fieldtype": "Datetime",
+   "label": "Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Delivered At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "read_at",
+   "fieldtype": "Datetime",
+   "label": "Read At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "result_section",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Code",
+   "label": "Provider Response",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Idempotency Key",
+   "read_only": 1,
+   "unique": 1
+  }
+ ],
+ "in_create": 1,
+ "links": [],
+ "modified": "2026-10-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Grid WhatsApp",
+ "name": "WhatsApp Notification Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 0,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "WhatsApp Manager",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "recipient"
+}
