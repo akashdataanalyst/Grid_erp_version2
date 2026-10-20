@@ -24,7 +24,7 @@ concurrency:
 
 env:
   IMAGE: ghcr.io/akashdataanalyst/grid-erp-v2
-  APP_BRANCH: main
+  APP_BRANCH: master
   FRAPPE_VERSION: version-16
 
 jobs:
