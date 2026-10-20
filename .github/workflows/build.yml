@@ -14,7 +14,7 @@ name: Build Image
 
 on:
   push:
-    branches: [ main ]       # main par push hone par build
+    branches: [ master ]       # master par push hone par build
   workflow_dispatch:         # Actions tab se manual run
 
 # ek time par sirf ek deploy (doosra queue mein wait karega)
@@ -48,7 +48,7 @@ jobs:
           [
             {"url": "https://github.com/frappe/erpnext", "branch": "${{ env.FRAPPE_VERSION }}"},
             {"url": "https://github.com/frappe/hrms", "branch": "${{ env.FRAPPE_VERSION }}"},
-            {"url": "https://github.com/akashdataanalyst/Grid_Erp_version2", "branch": "${{ env.APP_BRANCH }}"}
+            {"url": "https://github.com/akashdataanalyst/Grid_erp_version2", "branch": "${{ env.APP_BRANCH }}"}
           ]
           EOF
           cat apps.json
