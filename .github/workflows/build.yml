@@ -9,7 +9,6 @@
 #     purani image wapas chalao (+ migrate shuru ho chuka tha to DB backup restore)
 #     -> maintenance OFF -> job laal (fail) dikhegi, par site purane version par chalti rahegi
 # =====================================================================
-
 name: Build Image
 
 on:
